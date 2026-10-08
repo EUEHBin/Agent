@@ -1,0 +1,201 @@
+{
+  "title": "Python语言核心精讲",
+  "author": "袁进",
+  "description": "此Python课程专为Agents应用开发设计，涵盖所有开发Agents应用所需的Python知识。全程干货、大量练习、重视概念和设计、弱化API使用，完美适配AI Coding时代。",
+  "playerPath": "AI大全栈 / Python / Python语言核心精讲",
+  "resourceUrl": "https://gitee.com/dev-edu/python-for-agent",
+  "skills": [
+    "python环境",
+    "pyenv",
+    "基本类型",
+    "容器类型",
+    "内置函数",
+    "LEGB作用域",
+    "lambda表达式",
+    "类",
+    "实例成员",
+    "类成员",
+    "静态成员",
+    "多继承",
+    "MRO",
+    "私有成员",
+    "metaclass",
+    "type类",
+    "callable",
+    "metaclass",
+    "装饰器",
+    "魔术方法",
+    "属性描述符",
+    "异常处理",
+    "异常链",
+    "迭代器",
+    "生成器",
+    "可迭代协议",
+    "推导式",
+    "生成器表达式",
+    "上下文管理器",
+    "ABC",
+    "类型标注",
+    "模块化",
+    "python包",
+    "标准库",
+    "文件I/O",
+    "pip",
+    "venv",
+    "虚拟环境管理",
+    "第三方库",
+    "event loop",
+    "asyncio",
+    "Future类",
+    "协程 Coroutine",
+    "async",
+    "await",
+    "异步编程",
+    "并发控制",
+    "多线程",
+    "多进程",
+    "线程池",
+    "进程池",
+    "构建打包",
+    "私有发布",
+    "可编辑依赖",
+    "项目管理工具",
+    "uv",
+    "makefile",
+    "monorepo",
+    "workspace",
+    "断点调试"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "必看导言",
+      "showIndex": true
+    },
+    {
+      "title": "python环境安装",
+      "showIndex": true
+    },
+    {
+      "title": "python基本语法",
+      "showIndex": true
+    },
+    {
+      "title": "容器类型",
+      "showIndex": true
+    },
+    {
+      "title": "函数",
+      "showIndex": true
+    },
+    {
+      "title": "作用域",
+      "showIndex": true
+    },
+    {
+      "title": "lambda表达式",
+      "showIndex": true
+    },
+    {
+      "title": "类和对象",
+      "showIndex": true
+    },
+    {
+      "title": "对象的类型",
+      "showIndex": true
+    },
+    {
+      "title": "对象的创建过程",
+      "showIndex": true
+    },
+    {
+      "title": "可调用对象",
+      "showIndex": true
+    },
+    {
+      "title": "元类",
+      "showIndex": true
+    },
+    {
+      "title": "装饰器",
+      "showIndex": true
+    },
+    {
+      "title": "魔术方法",
+      "showIndex": true
+    },
+    {
+      "title": "描述符",
+      "showIndex": true
+    },
+    {
+      "title": "异常处理",
+      "showIndex": true
+    },
+    {
+      "title": "迭代器与生成器",
+      "showIndex": true
+    },
+    {
+      "title": "上下文管理器",
+      "showIndex": true
+    },
+    {
+      "title": "ABC",
+      "showIndex": true
+    },
+    {
+      "title": "类型标注",
+      "showIndex": true
+    },
+    {
+      "title": "模块化",
+      "showIndex": true
+    },
+    {
+      "title": "标准库",
+      "showIndex": true
+    },
+    {
+      "title": "第三方库",
+      "showIndex": true
+    },
+    {
+      "title": "事件循环",
+      "showIndex": true
+    },
+    {
+      "title": "Future类",
+      "showIndex": true
+    },
+    {
+      "title": "协程 Coroutine",
+      "showIndex": true
+    },
+    {
+      "title": "异步编程",
+      "showIndex": true
+    },
+    {
+      "title": "多线程与多进程",
+      "showIndex": true
+    },
+    {
+      "title": "构建发布",
+      "showIndex": true
+    },
+    {
+      "title": "项目管理工具",
+      "showIndex": true
+    },
+    {
+      "title": "monorepo",
+      "showIndex": true
+    },
+    {
+      "title": "断点调试",
+      "showIndex": true
+    }
+  ]
+}

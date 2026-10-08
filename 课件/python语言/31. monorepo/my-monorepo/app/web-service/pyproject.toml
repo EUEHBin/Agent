@@ -1,0 +1,12 @@
+[project]
+name = "web-service"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "agents",
+]
+
+[tool.uv.sources]
+agents = { workspace = true }

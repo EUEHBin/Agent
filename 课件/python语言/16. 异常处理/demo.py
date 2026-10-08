@@ -1,0 +1,32 @@
+def exception_chains1():
+    # 方式1：直接抛出（无关联）
+    try:
+        raise ValueError("错误A")
+    except ValueError:
+        # 这里可以做一些其他处理。
+        raise RuntimeError("错误B")  # 隐式关联，__context__ 有值
+
+
+def exception_chains2():
+    # 方式2：from 显式关联
+    try:
+        raise ValueError("错误A")
+    except ValueError as e:
+        # 做了一些其他处理。
+        raise RuntimeError("错误B") from e  # 显式关联，__cause__ 有值
+
+
+# 查看区别
+try:
+    exception_chains1()
+except RuntimeError as e:
+    print("隐式关联:", e)
+    print(f"  __cause__: {e.__cause__}")  # None
+    print(f"  __context__: {e.__context__}")  # ValueError
+
+try:
+    exception_chains2()
+except RuntimeError as e:
+    print("\n显式关联:", e)
+    print(f"  __cause__: {e.__cause__}")  # ValueError
+    print(f"  __context__: {e.__context__}")  # ValueError
