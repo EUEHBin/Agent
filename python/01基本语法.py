@@ -1,20 +1,15 @@
-def to_linked_list(iterable):
-    result = {}
-    len = len(iterable)
-    for i,value in iterable:
-        if i < len:
-            result["value"] = value
-            result["next"] = to_linked_list(iterable[i+1:])
+# 以下规则适用于所有成员
 
 
+class A:
+    _a = 1  # 约定私有成员，外部仍然可以访问，大部分情况用它
+    __a = 2  # 严格私有成员，外部无法直接访问__a
+    __a__ = 3  # 有特殊作用的成员，往往是系统内置的
+
+    @classmethod
+    def test(cls):
+        print(cls._a, cls.__a, cls.__a__)  # 内部可以访问所有成员
 
 
-linked1 = to_linked_list((1, 2, 3))
-print(linked1)
-# {'value': 1, 'next': {'value': 2, 'next': {'value': 3, 'next': None}}}
-
-linked2 = to_linked_list([10, 20])
-print(linked2)
-# {'value': 10, 'next': {'value': 20, 'next': None}}
-
-print(to_linked_list([]))  # None
+A.test()  # 1 2 3
+print(A._a, A.__a, A.__a__)  # __a访问不到，其他可以
