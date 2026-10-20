@@ -1,0 +1,13 @@
+{
+  "name": "duyi-service",
+  "private": true,
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev:upload": "pnpm --filter upload-demo dev",
+    "build:upload": "pnpm --filter upload-demo build",
+    "preview:upload": "pnpm --filter upload-demo preview"
+  }
+}

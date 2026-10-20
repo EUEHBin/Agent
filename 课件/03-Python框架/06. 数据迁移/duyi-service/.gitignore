@@ -1,0 +1,25 @@
+# mac
+DS_Store
+
+# temp
+/temp
+
+# cache
+__pycache__
+
+# env
+.env
+
+# frontend
+node_modules
+
+# build
+__pycache__/
+*.py[cod]
+build/
+*.egg-info/
+.venv/
+.env
+
+# db
+.db

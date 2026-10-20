@@ -1,0 +1,25 @@
+[project]
+name = "web-service"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "alembic==1.18.4",
+    "asyncpg==0.31.0",
+    "duyi-utils",
+    "fastapi[standard]==0.136.3",
+    "psycopg2-binary==2.9.12",
+    "pydantic-settings==2.14.1",
+    "sqlalchemy[asyncio]==2.0.50",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+duyi-utils = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["app/"]

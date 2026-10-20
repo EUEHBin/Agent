@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "excalidraw": {
+      "type": "local",
+      "command": [
+        "node",
+        "/Users/yuanjin/开发资源/mcps/excalidraw-mcp/dist/index.js",
+        "--stdio",
+      ],
+    },
+  },
+}

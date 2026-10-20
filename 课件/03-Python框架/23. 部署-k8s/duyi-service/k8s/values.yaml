@@ -1,0 +1,24 @@
+environment: production
+logLevel: INFO
+
+image:
+  repository: crpi-uufo1qbvuz3u2wb3-vpc.cn-shanghai.personal.cr.aliyuncs.com/duyiedu/duyi-service
+  tag: 0.1.0
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: acr-registry-secret
+
+db:
+  host: pgm-uf67997ecrc3jns7.rwlb.rds.aliyuncs.com
+  port: '5432'
+  name: duyi_db
+  user: duyi_root
+
+log:
+  project: k8s-log-cd0d887e2d18247b0a74063b1a712299b
+  logstore: duyi-service-stdout
+
+secret:
+  dbPassword: ''
+  jwtSecretKey: ''

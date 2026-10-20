@@ -1,0 +1,20 @@
+apiVersion: log.alibabacloud.com/v1alpha1
+kind: AliyunLogConfig
+metadata:
+  name: {{ .Values.log.logstore }}
+spec:
+  project: {{ .Values.log.project }}
+  logstore: {{ .Values.log.logstore }}
+  logtailConfig:
+    inputType: plugin
+    configName: {{ .Values.log.logstore }}
+    inputDetail:
+      plugin:
+        inputs:
+          - type: service_docker_stdout
+            detail:
+              Stdout: true
+              Stderr: true
+              K8sNamespaceRegex: ^(default)$
+              IncludeK8sLabel:
+                app: duyi-service

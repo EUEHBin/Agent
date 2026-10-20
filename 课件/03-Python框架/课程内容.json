@@ -1,0 +1,188 @@
+{
+  "title": "Python框架",
+  "author": "袁进",
+  "description": "Python后端框架实战课程，以FastAPI为核心，结合SQLAlchemy、Alembic、Pytest等生态工具，从零搭建企业级后端服务。涵盖RESTful API设计、数据库ORM、认证授权(SSO+RBAC)、测试、容器化部署等全链路技能，最终交付一个完整的单点登录+权限管理系统。",
+  "playerPath": "AI大全栈 / Python / Python框架",
+  "resourceUrl": "https://gitee.com/dev-edu/python-framework",
+  "skills": [
+    "FastAPI",
+    "Pydantic",
+    "Uvicorn",
+    "Starlette",
+    "OpenAPI",
+    "Swagger",
+    "Redoc",
+    "环境变量",
+    "DTO",
+    "断点调试",
+    "路由",
+    "SQLAlchemy",
+    "数据库引擎",
+    "连接池",
+    "ORM",
+    "Mapping",
+    "Dialect",
+    "SQL注入",
+    "SQL表达式",
+    "SQL Session",
+    "事务",
+    "CRUD",
+    "migration",
+    "IoC",
+    "DI 依赖注入",
+    "统一异常处理",
+    "横切关注点",
+    "AOP",
+    "中间件",
+    "统一响应格式",
+    "CORS",
+    "性能计时",
+    "pytest",
+    "测试环境启动和销毁",
+    "单元测试",
+    "集成测试",
+    "系统测试",
+    "e2e测试",
+    "冒烟测试",
+    "Stub 模式",
+    "Mock 模式",
+    "测试覆盖率",
+    "三层架构演进",
+    "阿里云OSS上传",
+    "新功能开发步骤",
+    "FastAPI生命周期",
+    "长短事务抉择",
+    "混合工程",
+    "hash",
+    "签名",
+    "注入当前用户",
+    "日志处理",
+    "loguru",
+    "模板引擎",
+    "流式响应",
+    "WebSocket",
+    "SSE",
+    "企业级生产部署",
+    "Docker",
+    "镜像",
+    "容器",
+    "VPC",
+    "RDS",
+    "ACR",
+    "k8s集群",
+    "pod",
+    "ingress",
+    "ACK/ACS",
+    "ALB负载均衡",
+    "CI/CD",
+    "云效"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "Web服务框架",
+      "showIndex": true
+    },
+    {
+      "title": "优化包结构",
+      "showIndex": true
+    },
+    {
+      "title": "初识SQLAlchemy",
+      "showIndex": true
+    },
+    {
+      "title": "ORM",
+      "showIndex": true
+    },
+    {
+      "title": "数据操作",
+      "showIndex": true
+    },
+    {
+      "title": "数据迁移",
+      "showIndex": true
+    },
+    {
+      "title": "业务逻辑",
+      "showIndex": true
+    },
+    {
+      "title": "依赖注入",
+      "showIndex": true
+    },
+    {
+      "title": "统一异常处理",
+      "showIndex": true
+    },
+    {
+      "title": "中间件",
+      "showIndex": true
+    },
+    {
+      "title": "测试框架",
+      "showIndex": true
+    },
+    {
+      "title": "测试方案",
+      "showIndex": true
+    },
+    {
+      "title": "三层架构",
+      "showIndex": true
+    },
+    {
+      "title": "文件上传",
+      "showIndex": true
+    },
+    {
+      "title": "系统设置",
+      "showIndex": true
+    },
+    {
+      "title": "长事务和短事务",
+      "showIndex": true
+    },
+    {
+      "title": "用户系统",
+      "showIndex": true
+    },
+    {
+      "title": "日志",
+      "showIndex": true
+    },
+    {
+      "title": "AI导购",
+      "showIndex": true
+    },
+    {
+      "title": "流式响应",
+      "showIndex": true
+    },
+    {
+      "title": "部署-认识Docker",
+      "showIndex": true
+    },
+    {
+      "title": "部署-云资产",
+      "showIndex": true
+    },
+    {
+      "title": "部署-k8s",
+      "showIndex": true
+    },
+    {
+      "title": "部署-CICD",
+      "showIndex": true
+    },
+    {
+      "title": "部署-总结",
+      "showIndex": true
+    },
+    {
+      "title": "python收官检验",
+      "showIndex": true
+    }
+  ]
+}

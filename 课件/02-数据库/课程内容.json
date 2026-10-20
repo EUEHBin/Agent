@@ -1,0 +1,93 @@
+{
+  "title": "数据库",
+  "author": "袁进",
+  "description": "",
+  "playerPath": "AI大全栈 / 通识 / 数据库",
+  "resourceUrl": "https://gitee.com/dev-edu/database",
+  "skills": [
+    "PostgreSQL",
+    "pgAdmin",
+    "psql",
+    "SQL",
+    "DDL",
+    "Primary Key",
+    "Database",
+    "table",
+    "Column",
+    "Column Type",
+    "Foreign Key",
+    "ERD",
+    "INSERT",
+    "SELECT",
+    "UPDATE",
+    "DELETE",
+    "聚合函数",
+    "GROUP BY",
+    "HAVING",
+    "ORDER BY",
+    "LIMIT",
+    "JOIN",
+    "INNER JOIN",
+    "LEFT JOIN",
+    "RIGHT JOIN",
+    "FULL JOIN",
+    "UNION",
+    "UNION ALL",
+    "子查询",
+    "事务",
+    "ACID",
+    "事务隔离级别",
+    "索引",
+    "EXPLAIN",
+    "备份与恢复",
+    "锁",
+    "视图",
+    "物化视图",
+    "存储过程",
+    "触发器",
+    "CTE 表达式",
+    "全文检索",
+    "GIN / GiST 索引",
+    "BRIN 索引",
+    "表分区",
+    "表继承",
+    "插件机制",
+    "权限系统",
+    "FDW（外部表）",
+    "JSON / JSONB",
+    "VACUUM",
+    "复制（流复制 / 逻辑复制）"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "PostgreSQL安装",
+      "showIndex": true
+    },
+    {
+      "title": "DDL",
+      "showIndex": true
+    },
+    {
+      "title": "表间关系",
+      "showIndex": true
+    },
+    {
+      "title": "DML",
+      "showIndex": true
+    },
+    {
+      "title": "事务",
+      "showIndex": true
+    },
+    {
+      "title": "索引",
+      "showIndex": true
+    },
+    {
+      "title": "拓展知识",
+      "showIndex": true
+    }
+  ]
+}
