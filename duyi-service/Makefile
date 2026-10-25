@@ -1,6 +1,11 @@
 # Makefile
 
-.PHONY: dev
+.PHONY: dev debug
 
 dev:
-	uv run --package web-service fastapi dev apps/web-service/main.py --port 8080
+	export PYTHONDONTWRITEBYTECODE=1; \
+	uv run --package web-service fastapi dev apps/web-service/app/main.py --port 8080
+
+debug:
+	export PYTHONDONTWRITEBYTECODE=1; \
+	uv run --package web-service python -m debugpy --listen 0.0.0.0:5678 --wait-for-client -m fastapi dev apps/web-service/app/main.py --port 8000

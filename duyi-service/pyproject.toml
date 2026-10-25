@@ -11,3 +11,8 @@ members = [
     "packages/*",
     "apps/*"
 ]
+
+[dependency-groups]
+dev = [
+    "debugpy>=1.8.22",
+]
