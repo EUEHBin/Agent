@@ -13,3 +13,6 @@ wheels/
 .env
 .env.*
 !.env.example
+
+# PostgreSQL 本地数据目录（Docker 挂载卷，不要提交）
+db/
