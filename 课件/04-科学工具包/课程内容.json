@@ -1,0 +1,79 @@
+{
+  "title": "数据科学工具包",
+  "author": "袁进",
+  "description": "",
+  "playerPath": "AI大全栈 / Python / 数据科学工具包",
+  "resourceUrl": "https://gitee.com/dev-edu/data-science-tools",
+  "skills": [
+    "Jupyter",
+    "Numpy",
+    "ndarray",
+    "dtype",
+    "shape",
+    "strides",
+    "axis",
+    "索引",
+    "切片",
+    "变形",
+    "重塑",
+    "统计标准差",
+    "广播",
+    "Series",
+    "DataFrame",
+    "索引",
+    "数据清洗",
+    "loc",
+    "iloc",
+    "figure",
+    "Axes",
+    "Artist",
+    "FuncAnimation",
+    "ArtistAnimation",
+    "交互式组件",
+    "Seaborn"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "课程导言",
+      "showIndex": true
+    },
+    {
+      "title": "Jupyter",
+      "showIndex": true
+    },
+    {
+      "title": "Numpy - 核心概念",
+      "showIndex": true
+    },
+    {
+      "title": "Numpy - 数据操作",
+      "showIndex": true
+    },
+    {
+      "title": "Pandas - 数据类型",
+      "showIndex": true
+    },
+    {
+      "title": "Pandas - 数据清洗",
+      "showIndex": true
+    },
+    {
+      "title": "Matplotlib - 核心概念",
+      "showIndex": true
+    },
+    {
+      "title": "Matplotlib - 动画",
+      "showIndex": true
+    },
+    {
+      "title": "Matplotlib - 交互式组件",
+      "showIndex": true
+    },
+    {
+      "title": "Seaborn",
+      "showIndex": true
+    }
+  ]
+}
