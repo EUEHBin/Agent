@@ -1,0 +1,7 @@
+{
+  "code-runner.runInTerminal": true,
+  "code-runner.executorMap": {
+    "python": "cd /Users/eueh/Desktop/Agent/duyi-service && uv run --package web-service python -u $fullFileName"
+  },
+  "python.defaultInterpreterPath": "/Users/eueh/Desktop/Agent/duyi-service/.venv/bin/python"
+}

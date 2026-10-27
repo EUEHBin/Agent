@@ -1047,7 +1047,7 @@ wheels = [
 [[package]]
 name = "web-service"
 version = "0.1.0"
-source = { virtual = "apps/web-service" }
+source = { editable = "apps/web-service" }
 dependencies = [
     { name = "asyncpg" },
     { name = "fastapi", extra = ["standard"] },

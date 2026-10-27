@@ -1,6 +1,18 @@
+# model/main.py
 import asyncio
 from sqlalchemy import text
 from app.model.engine import get_engine
+from app.model.base import Base
+from app.model.category import Category   # noqa: F401
+from app.model.product import Product     # noqa: F401
+from app.model.sku import Sku             # noqa: F401
+
+
+async def init_db():
+    engine = get_engine()
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    print("✅ 数据库表创建完成")
 
 
 async def test_connection():
@@ -9,13 +21,15 @@ async def test_connection():
         async with engine.connect() as conn:
             result = await conn.execute(text("SELECT 1"))
             value = result.scalar()
-            print(f"✅ 异步连接 PostgreSQL 成功！查询结果: {value}")
+            print(f"✅ 连接成功！查询结果: {value}")
     except Exception as e:
         print(f"❌ 连接失败: {e}")
-    finally:
-        await engine.dispose()
 
 
-# 运行异步函数
+async def main():
+    await init_db()
+    await test_connection()
+
+
 if __name__ == "__main__":
-    asyncio.run(test_connection())
+    asyncio.run(main())
