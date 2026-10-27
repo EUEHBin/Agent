@@ -1,0 +1,54 @@
+.shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---------- 顶部导航 ---------- */
+.nav {
+  height: var(--nav-h);
+  flex: 0 0 var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 26px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(10, 16, 22, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-glyph {
+  width: 18px; height: 18px; border-radius: 5px;
+  background: conic-gradient(from 140deg, var(--cyan), var(--amber), var(--cyan));
+  box-shadow: 0 0 14px rgba(77, 214, 193, 0.5);
+}
+.nav-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.nav-menu { display: flex; align-items: center; gap: 6px; }
+.nav-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all 0.18s ease;
+}
+.nav-link i { font-size: 11px; }
+.nav-link:hover { color: var(--text); background: #10202b; }
+.nav-link.active {
+  color: var(--cyan);
+  background: rgba(77, 214, 193, 0.1);
+  border-color: rgba(77, 214, 193, 0.35);
+}
+
+.shell-main { flex: 1; min-height: 0; overflow: hidden; }

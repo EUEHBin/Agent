@@ -1,0 +1,104 @@
+.nng-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nng-svg .nng-neuron {
+  cursor: pointer;
+}
+
+.nng-svg .nng-neuron circle {
+  fill: #3a4652;
+  transition: fill 0.35s ease, r 0.35s ease;
+}
+
+.nng-svg .nng-neuron.highlighted circle {
+  fill: #c8d6e0;
+  filter: drop-shadow(0 0 6px rgba(200, 214, 224, 0.5));
+}
+
+.nng-svg .nng-conn {
+  stroke: #2a333d;
+  stroke-width: 0.5;
+  transition: stroke 0.35s ease, stroke-width 0.35s ease, opacity 0.35s ease;
+}
+
+.nng-svg .nng-conn.highlighted {
+  stroke: #8a9aaa;
+  stroke-width: 1.2;
+}
+
+.nng-label {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  fill: #5c6b7a;
+  font-size: 13px;
+  text-anchor: middle;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.nng-svg .nng-neuron-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill 0.35s ease;
+}
+
+.nng-svg .nng-prob {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  fill: #ffffff;
+  text-anchor: start;
+  pointer-events: none;
+}
+
+.nng-svg .nng-prob.top {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.nng-grid {
+  stroke: #111a22;
+  stroke-width: 1;
+}
+
+.nng-digit-fo {
+  overflow: visible;
+}
+
+.nng-digit-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: nngDigitIn 0.4s ease;
+}
+
+.nng-digit-wrap .mnist-digit {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 0 18px rgba(77, 214, 193, 0.28);
+}
+
+.nng-digit-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+}
+
+@keyframes nngDigitIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,15 @@
+# Loop Engeering
+
+https://x.com/addyosmani/status/2064127981161959567
+
+Loop Engineering 关注的是如何让 Agent 自我推动，最终完成一个可交付的产品。
+
+它的实现方式是循环，在循环中：
+
+- 自主发现还未完成的任务
+- 驱动多个子代理并行任务，并使用工作树隔离
+- 自主沉淀知识
+- 自主接入工具
+- 不同的子代理分工
+
+<img src="https://resource.duyiedu.com/yuanjin/202607301319760.png" alt="image-20260730131916647" style="zoom: 33%;" />

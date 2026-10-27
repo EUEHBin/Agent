@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "n": {
+      "default": 0,
+      "description": "计数值",
+      "title": "N",
+      "type": "integer"
+    }
+  },
+  "title": "Counter",
+  "type": "object"
+}

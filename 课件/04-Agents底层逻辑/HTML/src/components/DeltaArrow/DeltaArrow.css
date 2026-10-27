@@ -1,0 +1,19 @@
+.delta-arrow {
+  pointer-events: none;
+}
+
+.delta-arrow.up line {
+  stroke: var(--cyan);
+}
+
+.delta-arrow.up polygon {
+  fill: var(--cyan);
+}
+
+.delta-arrow.down line {
+  stroke: var(--amber);
+}
+
+.delta-arrow.down polygon {
+  fill: var(--amber);
+}

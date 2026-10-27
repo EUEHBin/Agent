@@ -1,0 +1,8 @@
+.mnist-digit {
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}

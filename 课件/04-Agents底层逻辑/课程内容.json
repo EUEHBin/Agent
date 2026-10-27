@@ -1,0 +1,218 @@
+{
+  "title": "Agents底层逻辑",
+  "author": "袁进",
+  "description": "",
+  "playerPath": "AI大全栈 / AI / Agents底层逻辑",
+  "resourceUrl": "https://gitee.com/dev-edu/agent-core",
+  "skills": [
+    "AI岗位/薪资分布",
+    "AI学习路线",
+    "概念理解",
+    "机器学习",
+    "监督学习",
+    "自监督学习",
+    "强化学习",
+    "神经网络",
+    "深度学习",
+    "神经元",
+    "权重",
+    "偏置",
+    "激活函数",
+    "参数",
+    "前向传播",
+    "梯度下降",
+    "学习率",
+    "反向传播",
+    "Mini-Batch",
+    "泛化",
+    "过拟合",
+    "Token",
+    "BPE",
+    "transformers库",
+    "Hugging Face",
+    "token统计",
+    "矩阵的数学运算",
+    "词嵌入(Embedding)",
+    "上下文窗口",
+    "QKV矩阵",
+    "多头注意力",
+    "位置编码",
+    "前馈网络FFN",
+    "残差连接",
+    "自监督",
+    "采样策略",
+    "K-V缓存",
+    "预填充(Prefill)",
+    "预训练",
+    "后训练",
+    "思维链CoT",
+    "Ollama",
+    "OpenAI SDK",
+    "视觉能力",
+    "系统提示词",
+    "提示词模板",
+    "会话",
+    "缓存命中",
+    "tool calling",
+    "function calling",
+    "Pydantic 动态模型",
+    "ReAct",
+    "Agent",
+    "轮次",
+    "Tavily",
+    "Skill",
+    "渐进式披露",
+    "MCP协议",
+    "实现MCP客户端",
+    "Agent接入MCP",
+    "自定义MCP服务器",
+    "对比Skill和MCP",
+    "子代理",
+    "Sub Agent",
+    "Prompt Engeering",
+    "Context Engeering",
+    "Harness Engeering",
+    "Loop Engeering",
+    "Graph Engeering"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "必看导言",
+      "showIndex": true
+    },
+    {
+      "title": "AI的分类",
+      "showIndex": true
+    },
+    {
+      "title": "神经元",
+      "showIndex": true
+    },
+    {
+      "title": "前向传播",
+      "showIndex": true
+    },
+    {
+      "title": "梯度下降",
+      "showIndex": true
+    },
+    {
+      "title": "训练模式和框架",
+      "showIndex": true
+    },
+    {
+      "title": "词元",
+      "showIndex": true
+    },
+    {
+      "title": "token统计",
+      "showIndex": true
+    },
+    {
+      "title": "神经网络的本质",
+      "showIndex": true
+    },
+    {
+      "title": "词嵌入",
+      "showIndex": true
+    },
+    {
+      "title": "注意力机制",
+      "showIndex": true
+    },
+    {
+      "title": "Transformer的完整训练流程",
+      "showIndex": true
+    },
+    {
+      "title": "推理机制",
+      "showIndex": true
+    },
+    {
+      "title": "训练阶段",
+      "showIndex": true
+    },
+    {
+      "title": "Ollama",
+      "showIndex": true
+    },
+    {
+      "title": "系统提示词",
+      "showIndex": true
+    },
+    {
+      "title": "会话",
+      "showIndex": true
+    },
+    {
+      "title": "tools",
+      "showIndex": true
+    },
+    {
+      "title": "封装tools",
+      "showIndex": true
+    },
+    {
+      "title": "ReAct",
+      "showIndex": true
+    },
+    {
+      "title": "Agent",
+      "showIndex": true
+    },
+    {
+      "title": "Agent 搜索引擎",
+      "showIndex": true
+    },
+    {
+      "title": "Skill",
+      "showIndex": true
+    },
+    {
+      "title": "MCP协议",
+      "showIndex": true
+    },
+    {
+      "title": "MCP Client",
+      "showIndex": true
+    },
+    {
+      "title": "Agent接入MCP",
+      "showIndex": true
+    },
+    {
+      "title": "实现MCP服务器",
+      "showIndex": true
+    },
+    {
+      "title": "Skill VS MCP",
+      "showIndex": true
+    },
+    {
+      "title": "子代理",
+      "showIndex": true
+    },
+    {
+      "title": "Prompt Engeering",
+      "showIndex": true
+    },
+    {
+      "title": "Context Engeering",
+      "showIndex": true
+    },
+    {
+      "title": "Harness Engeering",
+      "showIndex": true
+    },
+    {
+      "title": "Loop Engeering",
+      "showIndex": true
+    },
+    {
+      "title": "Graph Engeering",
+      "showIndex": true
+    }
+  ]
+}

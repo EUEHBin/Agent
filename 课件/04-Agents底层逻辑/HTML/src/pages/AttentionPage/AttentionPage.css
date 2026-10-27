@@ -1,0 +1,359 @@
+/* ============================================================
+   AttentionPage  —  自注意力机制可视化
+   ============================================================ */
+
+.atp {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 22px 18px;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ---------- 页头 ---------- */
+.atp-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.atp-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  color: var(--cyan);
+  opacity: 0.85;
+}
+
+.atp-head h1 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2.2vw, 26px);
+  margin: 4px 0 0;
+  background: linear-gradient(180deg, #ffffff 0%, #a9c4c4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.atp-formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-soft);
+  white-space: nowrap;
+}
+
+/* ---------- 主体：图 + 控制面板 ---------- */
+.atp-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 330px;
+  gap: 14px;
+}
+
+.atp-viz {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 24, 33, 0.9),
+    rgba(9, 15, 20, 0.9)
+  );
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow:
+    0 30px 80px -40px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  overflow: auto;
+}
+
+.atp-controls {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ---------- 流程图 ---------- */
+.atp-flow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+/* ---------- 矩阵块 ---------- */
+.atp-matrix-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.atp-block-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.atp-shape {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* ---------- 矩阵 ---------- */
+.atp-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: linear-gradient(
+    160deg,
+    rgba(18, 27, 36, 0.95),
+    rgba(12, 19, 27, 0.98)
+  );
+  border: 1px solid rgba(77, 214, 193, 0.18);
+  border-radius: 12px;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.45),
+    4px 0 12px rgba(0, 0, 0, 0.35);
+}
+
+.atp-matrix-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.atp-matrix-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  width: 50px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.atp-output-cell {
+  border-color: rgba(255, 179, 92, 0.15);
+  background: rgba(255, 179, 92, 0.04);
+}
+
+/* ---------- 箭头 ---------- */
+.atp-arrow-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.atp-arrow-text {
+  font-size: 28px;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+/* ---------- Head 标签 ---------- */
+.atp-head-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+
+/* ---------- 注意力层 ---------- */
+.atp-attention-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.atp-attention-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 160px;
+  background: linear-gradient(
+    160deg,
+    rgba(18, 27, 36, 0.95),
+    rgba(12, 19, 27, 0.98)
+  );
+  border: 2px dashed rgba(77, 214, 193, 0.35);
+  border-radius: 14px;
+}
+
+.atp-attention-question {
+  font-family: 'Sora', sans-serif;
+  font-size: 80px;
+  font-weight: 800;
+  color: rgba(77, 214, 193, 0.55);
+  line-height: 1;
+}
+
+/* ---------- QKV 三路分叉 ---------- */
+.atp-qkv-col {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  flex-shrink: 0;
+}
+
+.atp-qkv-branch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.atp-weight-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: opacity 0.4s ease;
+  flex-shrink: 0;
+}
+
+.atp-weight-group.atp-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.atp-op {
+  font-size: 24px;
+  color: var(--cyan);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.atp-weight-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--muted);
+  flex-shrink: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.atp-weight-shape {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* ---------- QKV 颜色标记 ---------- */
+.atp-matrix-output {
+  border-color: rgba(255, 179, 92, 0.18);
+}
+
+.atp-label-q {
+  color: var(--cyan) !important;
+}
+.atp-label-k {
+  color: var(--amber) !important;
+}
+.atp-label-v {
+  color: #c084fc !important;
+}
+
+.atp-label-left {
+  align-self: flex-start;
+  font-size: 14px;
+}
+
+.atp-matrix-q {
+  border-color: rgba(77, 214, 193, 0.25);
+}
+.atp-matrix-k {
+  border-color: rgba(255, 179, 92, 0.25);
+}
+.atp-matrix-v {
+  border-color: rgba(192, 132, 252, 0.25);
+}
+
+.atp-label-score {
+  color: var(--amber) !important;
+}
+
+.atp-softmax-label {
+  color: var(--cyan);
+  margin-left: 4px;
+}
+
+/* ---------- 多头拼接 ---------- */
+.atp-multihead-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.atp-multihead-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.atp-arrow-down {
+  padding: 0;
+}
+
+.atp-matrix-score {
+  border-color: rgba(255, 179, 92, 0.3);
+}
+
+/* ---------- 多头切分线 ---------- */
+.atp-matrix-container {
+  position: relative;
+  display: inline-block;
+}
+
+.atp-divider {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  border-radius: 1px;
+  transform-origin: top;
+  animation: atp-divide-in 0.5s ease forwards;
+}
+
+.atp-divider-q { background: var(--cyan); }
+.atp-divider-k { background: var(--amber); }
+.atp-divider-v { background: #c084fc; }
+
+@keyframes atp-divide-in {
+  from { transform: translateX(-50%) scaleY(0); }
+  to { transform: translateX(-50%) scaleY(1); }
+}

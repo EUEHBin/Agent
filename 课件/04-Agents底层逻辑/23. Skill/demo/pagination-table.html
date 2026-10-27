@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据仪表 · 分页表格</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        /* ================================================================
+               0. 全局重置 & 字体
+               ================================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0B1120;
+            --bg-surface: rgba(255, 255, 255, 0.035);
+            --bg-surface-hover: rgba(255, 255, 255, 0.055);
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-strong: rgba(255, 255, 255, 0.10);
+            --text-primary: #E8EDF5;
+            --text-secondary: #8A99B5;
+            --text-tertiary: #5A6A85;
+            --accent-blue: #60A5FA;
+            --accent-blue-glow: rgba(96, 165, 250, 0.15);
+            --accent-purple: #A78BFA;
+            --accent-green: #34D399;
+            --accent-amber: #FBBF24;
+            --accent-rose: #FB7185;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+        }
+
+        html {
+            font-size: 15px;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background: var(--bg-deep);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background-image:
+                radial-gradient(ellipse 80% 60% at 20% 20%, rgba(96, 165, 250, 0.04) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(167, 139, 250, 0.03) 0%, transparent 70%);
+            background-attachment: fixed;
+        }
+
+        /* ================================================================
+           1. 卡片 — 毛玻璃容器
+           ================================================================ */
+        .card {
+            width: 100%;
+            max-width: 1240px;
+            background: var(--bg-card);
+            backdrop-filter: blur(24px) saturate(1.2);
+            -webkit-backdrop-filter: blur(24px) saturate(1.2);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            padding: 32px 36px 28px;
+            box-shadow:
+                0 8px 48px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* ================================================================
+           2. 头部
+           ================================================================ */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(96, 165, 250, 0.25);
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+
+        .header h1 small {
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-left: 10px;
+            letter-spacing: 0;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ---- 搜索框 ---- */
+        .search-wrap {
+            position: relative;
+        }
+
+        .search-wrap .icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            font-size: 14px;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .search-wrap input {
+            padding: 9px 14px 9px 34px;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-family: var(--font-display);
+            outline: none;
+            width: 200px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            transition: all 0.25s ease;
+        }
+
+        .search-wrap input::placeholder {
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
+
+        .search-wrap input:focus {
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px var(--accent-blue-glow);
+            width: 260px;
+        }
+
+        /* ---- 新增按钮 ---- */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 18px;
+            border: none;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--accent-blue), #3B82F6);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: var(--font-display);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(96, 165, 250, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(96, 165, 250, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        /* ================================================================
+           3. 表格容器
+           ================================================================ */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            background: rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+        }
+
+        /* ================================================================
+           4. 表格
+           ================================================================ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            min-width: 700px;
+        }
+
+        /* ---- 表头 ---- */
+        thead {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        thead th {
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            white-space: nowrap;
+            font-size: 11.5px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            user-select: none;
+            position: sticky;
+            top: 0;
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        /* ---- 表体 ---- */
+        tbody tr {
+            transition: background 0.2s ease;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--bg-surface-hover);
+        }
+
+        /* 行入场动画 */
+        tbody tr.row-enter {
+            animation: rowFadeIn 0.35s ease both;
+        }
+
+        @keyframes rowFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        tbody td {
+            padding: 13px 18px;
+            color: var(--text-primary);
+            vertical-align: middle;
+        }
+
+        /* ID 列 */
+        .cell-id {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        /* 姓名列 */
+        .cell-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* 邮箱列 */
+        .cell-email {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* 角色 — 标签样式 */
+        .role-tag {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+        }
+
+        /* ---- 状态指示器 ---- */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12.5px;
+            font-weight: 500;
+        }
+
+        .status-indicator .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .status-indicator .dot::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .status-active .dot {
+            background: var(--accent-green);
+            box-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+        }
+        .status-active .dot::after {
+            background: var(--accent-green);
+        }
+        .status-active .label {
+            color: var(--accent-green);
+        }
+
+        .status-inactive .dot {
+            background: var(--text-tertiary);
+        }
+        .status-inactive .dot::after {
+            background: var(--text-tertiary);
+        }
+        .status-inactive .label {
+            color: var(--text-tertiary);
+        }
+
+        .status-pending .dot {
+            background: var(--accent-amber);
+            box-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+        }
+        .status-pending .dot::after {
+            background: var(--accent-amber);
+        }
+        .status-pending .label {
+            color: var(--accent-amber);
+        }
+
+        /* ---- 操作按钮 ---- */
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .icon-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            border: none;
+            background: transparent;
+            color: var(--text-tertiary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            transition: all 0.18s ease;
+        }
+
+        .icon-btn:hover {
+            background: var(--bg-surface);
+            color: var(--text-primary);
+        }
+
+        .icon-btn.btn-edit:hover {
+            background: var(--accent-blue-glow);
+            color: var(--accent-blue);
+        }
+
+        .icon-btn.btn-delete:hover {
+            background: rgba(251, 113, 133, 0.12);
+            color: var(--accent-rose);
+        }
+
+        /* ---- 空状态 ---- */
+        .empty-row td {
+            text-align: center;
+            padding: 52px 18px 48px;
+            color: var(--text-tertiary);
+        }
+
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .empty-state .emoji {
+            font-size: 32px;
+            opacity: 0.4;
+        }
+
+        .empty-state .hint {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ================================================================
+           5. 底部：分页控件
+           ================================================================ */
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .info {
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .info strong {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* ---- 每页条数 ---- */
+        .page-size {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .page-size select {
+            padding: 5px 10px 5px 8px;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-family: var(--font-display);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238A99B5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            padding-right: 26px;
+            transition: border-color 0.2s;
+        }
+
+        .page-size select:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .page-size select option {
+            background: #1a2332;
+            color: var(--text-primary);
+        }
+
+        /* ---- 分页按钮 ---- */
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .pagination button {
+            min-width: 34px;
+            height: 34px;
+            padding: 0 8px;
+            border: 1px solid transparent;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--font-display);
+            cursor: pointer;
+            transition: all 0.18s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+
+        .pagination button:hover:not(:disabled):not(.active) {
+            background: var(--bg-surface);
+            border-color: var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .pagination button.active {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.10));
+            border-color: rgba(96, 165, 250, 0.25);
+            color: var(--accent-blue);
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.08);
+        }
+
+        .pagination button:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+        }
+
+        .pagination .nav-btn {
+            font-size: 16px;
+            font-weight: 400;
+            padding: 0 10px;
+            color: var(--text-tertiary);
+        }
+
+        .pagination .nav-btn:hover:not(:disabled) {
+            color: var(--text-primary);
+        }
+
+        .pagination .ellipsis {
+            min-width: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-tertiary);
+            font-size: 13px;
+            letter-spacing: 1px;
+            user-select: none;
+        }
+
+        /* ================================================================
+           6. 响应式
+           ================================================================ */
+        @media (max-width: 900px) {
+            .card {
+                padding: 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header-actions {
+                flex-wrap: wrap;
+            }
+
+            .search-wrap input {
+                width: 100%;
+            }
+
+            .search-wrap input:focus {
+                width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-left {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 14px;
+                border-radius: var(--radius-md);
+            }
+
+            thead th,
+            tbody td {
+                padding: 10px 12px;
+            }
+
+            .brand-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .header h1 {
+                font-size: 17px;
+            }
+        }
+
+        /* ================================================================
+           7. 无障碍 — 焦点样式 & 减少动效
+           ================================================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- ===== 头部 ===== -->
+        <div class="header">
+            <div class="header-left">
+                <div class="brand-icon">◈</div>
+                <h1>
+                    数据仪表
+                    <small id="totalCountLabel"></small>
+                </h1>
+            </div>
+            <div class="header-actions">
+                <div class="search-wrap">
+                    <span class="icon">⌕</span>
+                    <input type="text" id="searchInput" placeholder="搜索姓名、邮箱…" />
+                </div>
+                <button class="btn-primary" id="addBtn">＋ 新增</button>
+            </div>
+        </div>
+
+        <!-- ===== 表格 ===== -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>姓名</th>
+                        <th>邮箱</th>
+                        <th>角色</th>
+                        <th>状态</th>
+                        <th style="text-align:center;">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- JS 动态渲染 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== 底部 ===== -->
+        <div class="footer">
+            <div class="footer-left">
+                <div class="info" id="pageInfo">
+                    显示 <strong id="rangeStart">0</strong>–<strong id="rangeEnd">0</strong>，
+                    共 <strong id="totalCount">0</strong> 条
+                </div>
+                <div class="page-size">
+                    <label for="pageSizeSelect">每页</label>
+                    <select id="pageSizeSelect">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="pagination" id="paginationControls">
+                <!-- JS 动态渲染 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //  1. 模拟数据
+        // ================================================================
+        const rawData = (() => {
+            const roles = ['管理员', '编辑', '作者', '访客'];
+            const statuses = ['active', 'inactive', 'pending'];
+            const statusLabels = { active: '启用', inactive: '停用', pending: '待审' };
+            const firstNames = ['张', '李', '王', '赵', '刘', '陈', '杨', '黄', '周', '吴',
+                '徐', '孙', '马', '朱', '胡', '郭', '何', '高', '林', '罗'
+            ];
+            const lastNames = ['伟', '芳', '娜', '敏', '静', '强', '磊', '洋', '勇', '军',
+                '杰', '婷', '明', '超', '华', '飞', '娟', '涛', '雪', '浩'
+            ];
+            const domains = ['example.com', 'mail.com', 'test.org', 'demo.cn'];
+
+            const data = [];
+            for (let i = 1; i <= 87; i++) {
+                const fn = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const ln = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const name = fn + ln;
+                const domain = domains[Math.floor(Math.random() * domains.length)];
+                const email = `${name.toLowerCase()}${i}@${domain}`;
+                const role = roles[Math.floor(Math.random() * roles.length)];
+                const status = statuses[Math.floor(Math.random() * statuses.length)];
+                data.push({ id: i, name, email, role, status, statusLabel: statusLabels[status] });
+            }
+            return data;
+        })();
+
+        // ================================================================
+        //  2. 状态
+        // ================================================================
+        let currentPage = 1;
+        let pageSize = 10;
+        let searchKeyword = '';
+        let filteredData = [...rawData];
+
+        // ================================================================
+        //  3. 核心函数
+        // ================================================================
+        function filterData() {
+            const keyword = searchKeyword.trim().toLowerCase();
+            if (!keyword) {
+                filteredData = [...rawData];
+            } else {
+                filteredData = rawData.filter(item =>
+                    item.name.toLowerCase().includes(keyword) ||
+                    item.email.toLowerCase().includes(keyword) ||
+                    item.role.includes(keyword) ||
+                    item.statusLabel.includes(keyword)
+                );
+            }
+            currentPage = 1;
+            render();
+        }
+
+        function getTotalPages() {
+            return Math.max(1, Math.ceil(filteredData.length / pageSize));
+        }
+
+        function getCurrentPageData() {
+            const start = (currentPage - 1) * pageSize;
+            const end = Math.min(start + pageSize, filteredData.length);
+            return filteredData.slice(start, end);
+        }
+
+        // ================================================================
+        //  4. 渲染
+        // ================================================================
+        function render() {
+            const total = filteredData.length;
+            const totalPages = getTotalPages();
+
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            const pageData = getCurrentPageData();
+            const start = total === 0 ? 0 : (currentPage - 1) * pageSize + 1;
+            const end = total === 0 ? 0 : (currentPage - 1) * pageSize + pageData.length;
+
+            // ---- 表格 ----
+            const tbody = document.getElementById('tableBody');
+            if (pageData.length === 0) {
+                tbody.innerHTML = `
+                    <tr class="empty-row">
+                        <td colspan="6">
+                            <div class="empty-state">
+                                <span class="emoji">🔍</span>
+                                <span class="hint">没有找到匹配的记录</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tbody.innerHTML = pageData.map((item, idx) => `
+                    <tr class="row-enter" style="animation-delay: ${idx * 30}ms">
+                        <td><span class="cell-id">#${String(item.id).padStart(2, '0')}</span></td>
+                        <td><span class="cell-name">${item.name}</span></td>
+                        <td><span class="cell-email">${item.email}</span></td>
+                        <td><span class="role-tag">${item.role}</span></td>
+                        <td>
+                            <span class="status-indicator status-${item.status}">
+                                <span class="dot"></span>
+                                <span class="label">${item.statusLabel}</span>
+                            </span>
+                        </td>
+                        <td style="text-align:center;">
+                            <div class="actions" style="justify-content:center;">
+                                <button class="icon-btn btn-edit" data-id="${item.id}" title="编辑">✎</button>
+                                <button class="icon-btn btn-delete" data-id="${item.id}" title="删除">✕</button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // ---- 统计 ----
+            document.getElementById('totalCountLabel').textContent = `共 ${total} 条`;
+            document.getElementById('rangeStart').textContent = start;
+            document.getElementById('rangeEnd').textContent = end;
+            document.getElementById('totalCount').textContent = total;
+
+            // ---- 分页 ----
+            renderPagination(totalPages);
+        }
+
+        function renderPagination(totalPages) {
+            const container = document.getElementById('paginationControls');
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            const c = currentPage;
+            const t = totalPages;
+            const pages = [];
+
+            // 上一页
+            pages.push(`<button class="nav-btn" data-page="${c - 1}" ${c <= 1 ? 'disabled' : ''}>‹</button>`);
+
+            // 页码
+            const range = new Set();
+            range.add(1);
+            range.add(t);
+            for (let i = Math.max(2, c - 1); i <= Math.min(t - 1, c + 1); i++) {
+                range.add(i);
+            }
+
+            const sorted = [...range].sort((a, b) => a - b);
+            let last = 0;
+            for (const p of sorted) {
+                if (last && p - last > 1) {
+                    pages.push(`<span class="ellipsis">···</span>`);
+                }
+                pages.push(`<button class="${p === c ? 'active' : ''}" data-page="${p}">${p}</button>`);
+                last = p;
+            }
+
+            // 下一页
+            pages.push(`<button class="nav-btn" data-page="${c + 1}" ${c >= t ? 'disabled' : ''}>›</button>`);
+
+            container.innerHTML = pages.join('');
+
+            // 绑定点击
+            container.querySelectorAll('button:not(:disabled)').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const page = parseInt(btn.dataset.page);
+                    if (!isNaN(page) && page >= 1 && page <= totalPages) {
+                        currentPage = page;
+                        render();
+                        // 滚动到表格顶部
+                        document.querySelector('.table-wrapper').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+            });
+        }
+
+        // ================================================================
+        //  5. 事件绑定
+        // ================================================================
+        // 搜索防抖
+        let searchTimer = null;
+        document.getElementById('searchInput').addEventListener('input', function() {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => {
+                searchKeyword = this.value;
+                filterData();
+            }, 300);
+        });
+
+        // 每页条数
+        document.getElementById('pageSizeSelect').addEventListener('change', function() {
+            pageSize = parseInt(this.value);
+            currentPage = 1;
+            render();
+        });
+
+        // 新增按钮
+        document.getElementById('addBtn').addEventListener('click', () => {
+            const newId = rawData.length + 1;
+            rawData.push({
+                id: newId,
+                name: '新用户',
+                email: `newuser${newId}@example.com`,
+                role: '访客',
+                status: 'pending',
+                statusLabel: '待审'
+            });
+            filterData();
+        });
+
+        // 表格内操作（事件委托）
+        document.getElementById('tableBody').addEventListener('click', function(e) {
+            const btn = e.target.closest('.icon-btn');
+            if (!btn) return;
+            const id = parseInt(btn.dataset.id);
+            if (btn.classList.contains('btn-edit')) {
+                const user = rawData.find(item => item.id === id);
+                if (user) {
+                    const newName = prompt(`编辑用户 #${id} 的姓名：`, user.name);
+                    if (newName && newName.trim()) {
+                        user.name = newName.trim();
+                        filterData();
+                    }
+                }
+            } else if (btn.classList.contains('btn-delete')) {
+                if (confirm(`确定要删除用户 #${id} 吗？`)) {
+                    const idx = rawData.findIndex(item => item.id === id);
+                    if (idx !== -1) {
+                        rawData.splice(idx, 1);
+                        filterData();
+                    }
+                }
+            }
+        });
+
+        // ================================================================
+        //  6. 初始化
+        // ================================================================
+        render();
+    </script>
+
+</body>
+</html>

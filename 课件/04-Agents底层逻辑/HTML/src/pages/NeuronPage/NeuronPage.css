@@ -1,0 +1,153 @@
+.npage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 22px 18px;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ---------- 页头 ---------- */
+.npage-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.npage-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  color: var(--cyan);
+  opacity: 0.85;
+}
+.npage-head h1 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2.2vw, 26px);
+  margin: 4px 0 0;
+  background: linear-gradient(180deg, #ffffff 0%, #a9c4c4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.npage-formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-soft);
+  white-space: nowrap;
+}
+
+/* ---------- 主体：图 + 控制面板 ---------- */
+.npage-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 330px;
+  gap: 14px;
+}
+
+.npage-viz {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(14,24,33,0.9), rgba(9,15,20,0.9));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 30px 80px -40px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.npage-controls {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.ctl-block {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctl-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--line);
+}
+
+/* ---------- 数字输入 ---------- */
+.numfield { display: flex; flex-direction: column; gap: 5px; }
+.numfield-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.numfield label {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+.numfield .contrib {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.numfield .p-inputnumber { width: 100%; }
+.numfield .p-inputnumber input.num-input {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 8px;
+  background: var(--bg-soft);
+  border-color: var(--line);
+}
+.numfield .p-inputnumber-button {
+  width: 2.2rem;
+  background: #14222d;
+  border-color: var(--line);
+  color: var(--muted);
+}
+.numfield .p-inputnumber-button:hover {
+  background: #1b2f3c;
+  color: var(--cyan);
+}
+
+/* ---------- 旋钮 ---------- */
+.knobs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  justify-items: center;
+}
+.knobfield { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.knobfield .p-knob-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.knoblabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+}

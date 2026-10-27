@@ -1,0 +1,101 @@
+.bpg-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bpg-svg .bpg-neuron circle {
+  fill: #3a4652;
+  transition: fill 0.35s ease, r 0.35s ease;
+}
+
+.bpg-svg .bpg-conn {
+  stroke: #2a333d;
+  stroke-width: 0.5;
+}
+
+.bpg-label {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  fill: #5c6b7a;
+  font-size: 13px;
+  text-anchor: middle;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.bpg-svg .bpg-neuron-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  fill: #ffffff;
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill 0.35s ease;
+}
+
+.bpg-svg .bpg-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  fill: #ffffff;
+  text-anchor: start;
+  pointer-events: none;
+}
+
+.bpg-loss-caption {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  fill: var(--amber);
+  text-anchor: start;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+.bpg-loss-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 34px;
+  fill: #ffffff;
+  text-anchor: start;
+  pointer-events: none;
+}
+
+.bpg-grid {
+  stroke: #111a22;
+  stroke-width: 1;
+}
+
+.bpg-ellipsis {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  fill: #7d90a0;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.bpg-digit-fo {
+  overflow: visible;
+}
+
+.bpg-digit-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bpg-digit-wrap .mnist-digit {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 0 18px rgba(77, 214, 193, 0.28);
+}
+
+.bpg-digit-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+}

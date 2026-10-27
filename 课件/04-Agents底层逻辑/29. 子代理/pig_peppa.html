@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小猪佩奇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F7FA 50%, #A5D6A7 50%, #81C784 100%);
+            font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #FF6B9D;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            animation: titleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .scene-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        /* 云朵动画 */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.8;
+            animation: floatCloud 15s ease-in-out infinite;
+        }
+
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .cloud-1 {
+            width: 80px;
+            height: 30px;
+            top: 20px;
+            left: -100px;
+        }
+        .cloud-1::before { width: 40px; height: 40px; top: -20px; left: 15px; }
+        .cloud-1::after { width: 50px; height: 50px; top: -25px; left: 35px; }
+
+        .cloud-2 {
+            width: 100px;
+            height: 35px;
+            top: 50px;
+            right: -120px;
+            animation-delay: -5s;
+            animation-duration: 18s;
+        }
+        .cloud-2::before { width: 45px; height: 45px; top: -22px; left: 20px; }
+        .cloud-2::after { width: 55px; height: 55px; top: -30px; left: 40px; }
+
+        @keyframes floatCloud {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(500px + 200px)); }
+        }
+
+        .cloud-2 {
+            animation-name: floatCloudReverse;
+        }
+
+        @keyframes floatCloudReverse {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-500px - 200px)); }
+        }
+
+        /* 太阳 */
+        .sun {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #FFD700, 0 0 60px rgba(255,215,0,0.5);
+            animation: sunPulse 3s ease-in-out infinite;
+        }
+
+        .sun-rays {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            animation: rotateSlow 20s linear infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { box-shadow: 0 0 30px #FFD700, 0 0 60px rgba(255,215,0,0.5); }
+            50% { box-shadow: 0 0 40px #FFD700, 0 0 80px rgba(255,215,0,0.6); }
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 花朵装饰 */
+        .flower {
+            position: absolute;
+            bottom: 80px;
+        }
+
+        .flower-petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FF69B4;
+            border-radius: 50% 0 50% 0;
+            transform-origin: center bottom;
+        }
+
+        .flower-center {
+            width: 12px;
+            height: 12px;
+            background: #FFD700;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+        }
+
+        /* 蝴蝶结 */
+        .bowtie-container {
+            position: absolute;
+            bottom: 15px;
+            right: 30px;
+            animation: butterflyFly 4s ease-in-out infinite;
+        }
+
+        @keyframes butterflyFly {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(-10deg); }
+            75% { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        svg.peppa-svg {
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #FF6B9D;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🐷 小猪佩奇 🐷</h1>
+    
+    <div class="scene-container">
+        <!-- 云 -->
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        
+        <!-- 太阳 -->
+        <div class="sun"></div>
+        <svg class="sun-rays" viewBox="0 0 60 60">
+            <line x1="30" y1="0" x2="30" y2="10" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="30" y1="50" x2="30" y2="60" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="0" y1="30" x2="10" y2="30" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="30" x2="60" y2="30" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="10" y1="10" x2="17" y2="17" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="43" y1="43" x2="50" y2="50" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="10" x2="43" y2="17" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+            <line x1="10" y1="50" x2="17" y2="43" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+
+        <!-- 小猪佩奇 -->
+        <svg class="peppa-svg" viewBox="0 0 400 450" width="400" height="450">
+            <!-- 背景草地波纹 -->
+            <ellipse cx="200" cy="420" rx="160" ry="15" fill="#4CAF50" opacity="0.3"/>
+            
+            <!-- 尾巴 -->
+            <path d="M 120 280 Q 90 260 85 275 Q 80 290 100 295 Q 110 298 120 285" 
+                  fill="none" stroke="#FF9EAF" stroke-width="6" stroke-linecap="round"/>
+            <path d="M 100 270 Q 85 260 82 272 Q 79 284 92 287" 
+                  fill="#FF9EAF" stroke="#FF9EAF" stroke-width="4" stroke-linecap="round"/>
+            
+            <!-- 左腿 -->
+            <rect x="155" y="370" width="25" height="50" rx="12" fill="#FF9EAF"/>
+            <ellipse cx="167" cy="418" rx="15" ry="10" fill="#FF9EAF"/>
+            
+            <!-- 右腿 -->
+            <rect x="220" y="370" width="25" height="50" rx="12" fill="#FF9EAF"/>
+            <ellipse cx="232" cy="418" rx="15" ry="10" fill="#FF9EAF"/>
+            
+            <!-- 裙子下半部分 -->
+            <path d="M 140 260 Q 120 320 130 380 L 270 380 Q 280 320 260 260 Z" 
+                  fill="#FF3B30" stroke="#E53935" stroke-width="2"/>
+            
+            <!-- 裙子褶皱 -->
+            <path d="M 160 300 Q 155 340 158 375" fill="none" stroke="#E53935" stroke-width="2" opacity="0.5"/>
+            <path d="M 200 290 Q 198 330 200 378" fill="none" stroke="#E53935" stroke-width="2" opacity="0.5"/>
+            <path d="M 240 300 Q 245 340 242 375" fill="none" stroke="#E53935" stroke-width="2" opacity="0.5"/>
+            
+            <!-- 左手臂 -->
+            <path d="M 145 250 Q 115 270 120 310 Q 125 320 135 315 Q 135 290 150 270" 
+                  fill="#FF9EAF" stroke="#FF8A9E" stroke-width="2"/>
+            
+            <!-- 左手 -->
+            <circle cx="128" cy="318" r="12" fill="#FF9EAF"/>
+            
+            <!-- 右手臂 -->
+            <path d="M 255 250 Q 285 270 280 310 Q 275 320 265 315 Q 265 290 250 270" 
+                  fill="#FF9EAF" stroke="#FF8A9E" stroke-width="2"/>
+            
+            <!-- 右手 -->
+            <circle cx="272" cy="318" r="12" fill="#FF9EAF"/>
+            
+            <!-- 身体 -->
+            <ellipse cx="200" cy="260" rx="75" ry="70" fill="#FFB6C1"/>
+            
+            <!-- 裙子腰身 -->
+            <ellipse cx="200" cy="265" rx="70" ry="20" fill="#FF3B30"/>
+            
+            <!-- 领口 -->
+            <ellipse cx="200" cy="255" rx="25" ry="15" fill="#FFF5EE"/>
+            
+            <!-- 左耳 -->
+            <path d="M 145 130 Q 130 85 145 75 Q 160 70 170 95 Q 175 115 165 130" 
+                  fill="#FF9EAF" stroke="#FF8A9E" stroke-width="2"/>
+            <path d="M 150 125 Q 140 95 150 85 Q 160 80 165 100 Q 168 115 162 125" 
+                  fill="#FFB6C1"/>
+            
+            <!-- 右耳 -->
+            <path d="M 255 130 Q 270 85 255 75 Q 240 70 230 95 Q 225 115 235 130" 
+                  fill="#FF9EAF" stroke="#FF8A9E" stroke-width="2"/>
+            <path d="M 250 125 Q 260 95 250 85 Q 240 80 235 100 Q 232 115 238 125" 
+                  fill="#FFB6C1"/>
+            
+            <!-- 头 -->
+            <ellipse cx="200" cy="160" rx="85" ry="75" fill="#FFB6C1"/>
+            
+            <!-- 脸部特写区域 -->
+            <ellipse cx="200" cy="175" rx="70" ry="55" fill="#FFC0CB"/>
+            
+            <!-- 鼻子 -->
+            <ellipse cx="200" cy="170" rx="28" ry="22" fill="#FF9EAF" stroke="#FF8A9E" stroke-width="2"/>
+            
+            <!-- 鼻孔 -->
+            <ellipse cx="188" cy="168" rx="5" ry="7" fill="#FF6B9D"/>
+            <ellipse cx="212" cy="168" rx="5" ry="7" fill="#FF6B9D"/>
+            
+            <!-- 眼睛左边 -->
+            <circle cx="165" cy="145" r="12" fill="white"/>
+            <circle cx="165" cy="145" r="6" fill="#333"/>
+            <circle cx="167" cy="143" r="2.5" fill="white"/>
+            
+            <!-- 眼睛右边 -->
+            <circle cx="235" cy="145" r="12" fill="white"/>
+            <circle cx="235" cy="145" r="6" fill="#333"/>
+            <circle cx="237" cy="143" r="2.5" fill="white"/>
+            
+            <!-- 眉毛 -->
+            <path d="M 152 130 Q 165 122 178 130" fill="none" stroke="#FF8A9E" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 222 130 Q 235 122 248 130" fill="none" stroke="#FF8A9E" stroke-width="2.5" stroke-linecap="round"/>
+            
+            <!-- 腮红 -->
+            <ellipse cx="148" cy="165" rx="12" ry="8" fill="#FF6B9D" opacity="0.35"/>
+            <ellipse cx="252" cy="165" rx="12" ry="8" fill="#FF6B9D" opacity="0.35"/>
+            
+            <!-- 微笑的嘴巴 -->
+            <path d="M 170 185 Q 200 210 230 185" fill="none" stroke="#FF6B9D" stroke-width="3" stroke-linecap="round"/>
+            
+            <!-- 牙齿（可选可爱元素） -->
+            <rect x="193" y="193" width="14" height="8" rx="3" fill="white" stroke="#FFE0E0" stroke-width="1"/>
+            
+            <!-- 鞋子 -->
+            <!-- 左脚鞋 -->
+            <ellipse cx="167" cy="425" rx="18" ry="12" fill="#FF3B30"/>
+            <rect x="149" y="415" width="36" height="8" rx="4" fill="#E53935"/>
+            
+            <!-- 右脚鞋 -->
+            <ellipse cx="232" cy="425" rx="18" ry="12" fill="#FF3B30"/>
+            <rect x="214" y="415" width="36" height="8" rx="4" fill="#E53935"/>
+        </svg>
+
+        <!-- 蝴蝶 -->
+        <div class="bowtie-container">
+            <svg width="40" height="40" viewBox="0 0 40 40">
+                <ellipse cx="20" cy="15" rx="12" ry="10" fill="#FF69B4" transform="rotate(-20 20 15)"/>
+                <ellipse cx="20" cy="25" rx="12" ry="10" fill="#FF69B4" transform="rotate(20 20 25)"/>
+                <ellipse cx="20" cy="20" rx="4" ry="5" fill="#FF1493"/>
+            </svg>
+        </div>
+
+        <!-- 小花装饰 -->
+        <div class="flower" style="left: 30px;">
+            <svg width="30" height="40" viewBox="0 0 30 40">
+                <line x1="15" y1="15" x2="15" y2="40" stroke="#4CAF50" stroke-width="3"/>
+                <circle cx="15" cy="12" r="8" fill="#FF69B4"/>
+                <circle cx="15" cy="12" r="3" fill="#FFD700"/>
+                <circle cx="15" cy="4" r="5" fill="#FF69B4"/>
+                <circle cx="15" cy="20" r="5" fill="#FF69B4"/>
+                <circle cx="7" cy="12" r="5" fill="#FF69B4"/>
+                <circle cx="23" cy="12" r="5" fill="#FF69B4"/>
+            </svg>
+        </div>
+        <div class="flower" style="right: 50px;">
+            <svg width="35" height="45" viewBox="0 0 35 45">
+                <line x1="17" y1="18" x2="17" y2="45" stroke="#4CAF50" stroke-width="3"/>
+                <circle cx="17" cy="15" r="9" fill="#FF6B6B"/>
+                <circle cx="17" cy="15" r="3" fill="#FFD700"/>
+                <circle cx="17" cy="5" r="6" fill="#FF6B6B"/>
+                <circle cx="17" cy="25" r="6" fill="#FF6B6B"/>
+                <circle cx="8" cy="15" r="6" fill="#FF6B6B"/>
+                <circle cx="26" cy="15" r="6" fill="#FF6B6B"/>
+            </svg>
+        </div>
+    </div>
+
+    <p class="message">嘻嘻！我是小猪佩奇！</p>
+
+    <script>
+        // 添加交互效果：点击佩奇会有反应
+        const peppaSvg = document.querySelector('.peppa-svg');
+        const message = document.querySelector('.message');
+        const messages = [
+            '嘻嘻！我是小猪佩奇！',
+            '我最爱跳泥坑啦！💦',
+            '这是乔治！他喜欢恐龙🦕',
+            '我们是快乐的一家人！👨‍👩‍👧‍👦',
+            '咯咯咯～好开心呀！😊',
+            '你愿意和我做朋友吗？🤗'
+        ];
+
+        let currentMessage = 0;
+
+        peppaSvg.addEventListener('click', function() {
+            // 弹跳动画
+            this.style.transition = 'transform 0.3s ease';
+            this.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
+
+            // 显示随机消息
+            currentMessage = (currentMessage + 1) % messages.length;
+            message.style.opacity = '0';
+            message.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                message.textContent = messages[currentMessage];
+                message.style.transition = 'opacity 0.5s, transform 0.5s';
+                message.style.opacity = '1';
+                message.style.transform = 'translateY(0)';
+            }, 150);
+
+            // 添加眨眼效果
+            blink();
+        });
+
+        // 眨眼功能
+        function blink() {
+            const eyes = document.querySelectorAll('circle[fill="#333"]');
+            const mouths = document.querySelectorAll('path[stroke="#FF6B9D"]');
+            
+            eyes.forEach(eye => {
+                eye.style.transition = 'ry 0.1s';
+                eye.setAttribute('ry', '1');
+                setTimeout(() => {
+                    eye.setAttribute('ry', '6');
+                }, 150);
+            });
+
+            // 微笑变大
+            mouths.forEach(mouth => {
+                mouth.style.transition = 'stroke-width 0.2s';
+                mouth.setAttribute('stroke-width', '4');
+                setTimeout(() => {
+                    mouth.setAttribute('stroke-width', '3');
+                }, 300);
+            });
+        }
+
+        // 自动眨眼
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                blink();
+            }
+        }, 3000);
+
+        // 为花朵添加摇摆效果
+        const flowers = document.querySelectorAll('.flower');
+        flowers.forEach((flower, index) => {
+            flower.style.animation = `flowerSway ${3 + index}s ease-in-out infinite`;
+            flower.style.animationDelay = `${index * 0.5}s`;
+        });
+
+        // 动态添加花朵摇摆样式
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes flowerSway {
+                0%, 100% { transform: rotate(-5deg); }
+                50% { transform: rotate(5deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('🐷 小猪佩奇页面已加载完成！点击佩奇和她互动吧～');
+    </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+/* ============================================================
+   TokenEmbeddingPage  —  词嵌入层流程可视化
+   ============================================================ */
+
+.tep {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 22px 18px;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ---------- 页头 ---------- */
+.tep-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tep-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  color: var(--cyan);
+  opacity: 0.85;
+}
+
+.tep-head h1 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2.2vw, 26px);
+  margin: 4px 0 0;
+  background: linear-gradient(180deg, #ffffff 0%, #a9c4c4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tep-formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-soft);
+  white-space: nowrap;
+}
+
+/* ---------- 主体：全宽可视化区域 ---------- */
+.tep-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.tep-viz {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 24, 33, 0.9),
+    rgba(9, 15, 20, 0.9)
+  );
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px 36px;
+  box-shadow:
+    0 30px 80px -40px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ---------- 流程图容器 ---------- */
+.tep-flow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transform-style: preserve-3d;
+}
+
+/* ---------- 每个阶段 ---------- */
+.tep-stage {
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.tep-stage-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transform: rotateY(75deg);
+  transition: 0.5s;
+  zoom: 1.3;
+}
+
+.tep-stage-inner.active {
+  transform: rotateY(0);
+}
+
+.tep-stage-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.03em;
+}
+
+/* ---------- 公用块 ---------- */
+.tep-block {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.tep-tilt {
+  box-shadow:
+    4px 0 12px rgba(0, 0, 0, 0.35),
+    0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- 卡片 ---------- */
+.tep-card {
+  background: linear-gradient(
+    160deg,
+    rgba(18, 27, 36, 0.95),
+    rgba(12, 19, 27, 0.98)
+  );
+  border: 1px solid rgba(77, 214, 193, 0.18);
+}
+
+/* ---------- 文字块 ---------- */
+.tep-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transform: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.tep-char-cell {
+  width: 48px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+/* ---------- Token IDs 纵向矩阵 ---------- */
+.tep-ids-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tep-id-cell {
+  width: 60px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amber);
+  background: rgba(255, 179, 92, 0.08);
+  border: 1px solid rgba(255, 179, 92, 0.2);
+  border-radius: 5px;
+}
+
+/* ---------- 箭头 ---------- */
+.tep-arrow-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.tep-arrow {
+  font-size: 22px;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.tep-arrow-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* ---------- 维度标注 ---------- */
+.tep-dim {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   Embedding Layer 矩阵
+   ============================================================ */
+
+.tep-embed-card {
+  min-width: 260px;
+}
+
+.tep-embed-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tep-embed-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 4px;
+}
+
+.tep-embed-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  width: 46px;
+  height: 22px;
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.tep-embed-dots {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--muted);
+  opacity: 0.5;
+  margin: 0 1px;
+}
+
+/* 省略符区（中间大量省略） */
+.tep-embed-ellipsis {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 1px 4px;
+}
+
+.tep-dot-row {
+  color: var(--muted);
+  opacity: 0.3;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* ============================================================
+   Output 矩阵 (4 × 768)
+   ============================================================ */
+
+.tep-output-card {
+  min-width: 240px;
+}
+
+.tep-output-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

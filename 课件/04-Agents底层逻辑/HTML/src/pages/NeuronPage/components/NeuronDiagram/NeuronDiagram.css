@@ -1,0 +1,11 @@
+.neuron-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.neuron-svg text { font-family: 'JetBrains Mono', monospace; }
+
+.ns-wlabel { font-size: 15px; font-weight: 700; text-anchor: middle; }
+.ns-input { font-size: 20px; font-weight: 700; fill: #fff; }
+.ns-output { font-size: 22px; font-weight: 700; fill: #fff; }

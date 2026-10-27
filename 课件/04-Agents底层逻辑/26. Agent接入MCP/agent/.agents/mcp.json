@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "time": { "type": "stdio", "command": "uvx", "args": ["mcp-server-time"] },
+    "microsoft-learn": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    }
+  }
+}
