@@ -1,0 +1,20 @@
+{
+  "python_version": "3.13",
+  "source": {
+    "kind": "uv",
+    "root": "."
+  },
+  "graphs": {
+    "main_agent": "langchain_python.agents.main_agent:agent",
+    "coding_agent": "langchain_python.agents.coding_agent:agent",
+    "web_agent": "langchain_python.agents.web_agent:agent",
+    "handoff": "langchain_python.agents.handoff:agent",
+    "router": "langchain_python.agents.router_demo.router:agent",
+    "store_demo": "langchain_python.agents.demo.store_demo:agent"
+  },
+  "env": ".env",
+  "auth": {
+    "path": "langchain_python.core.auth:auth",
+    "disable_studio_auth": true
+  }
+}

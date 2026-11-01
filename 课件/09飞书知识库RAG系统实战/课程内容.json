@@ -1,0 +1,232 @@
+{
+  "title": "项目：飞书知识库RAG系统实战",
+  "author": "袁进",
+  "description": "",
+  "playerPath": "AI大全栈 / AI / 项目：飞书知识库RAG系统实战",
+  "resourceUrl": "https://gitee.com/dev-edu/deal_pilot_rag",
+  "skills": [
+    "索引",
+    "规格化",
+    "切片",
+    "检索",
+    "相似度",
+    "生成",
+    "来源引用",
+    "索引流水线",
+    "飞书开放平台",
+    "数据归一化",
+    "构建飞书文档树",
+    "文档图片的处理",
+    "OCR提取文字",
+    "使用视觉模型提取图片信息",
+    "文档结构化切片",
+    "保留切片父子关系",
+    "文本切片",
+    "表格切片",
+    "Document Loader",
+    "Text Loader",
+    "CSV Loader",
+    "PDF Loader",
+    "Markdown Loader",
+    "文本切片工具",
+    "Embedding模型选型",
+    "创建Embedding模型",
+    "Milvus环境搭建",
+    "Attu",
+    "Milvus DDL",
+    "Milvus DML",
+    "Milvus DQL",
+    "Attu使用技巧",
+    "分析器",
+    "全文检索",
+    "BM25",
+    "稠密向量",
+    "稀疏向量",
+    "倒排索引",
+    "词频统计",
+    "逆文档频率",
+    "VectorStore",
+    "Bug修复",
+    "LangGraph实现索引流水线",
+    "多路召回",
+    "融合排序",
+    "Rerank",
+    "RRF",
+    "Weighted",
+    "LLM Reranker",
+    "封装检索器",
+    "基于检索结果的内容生成",
+    "恢复图片展示",
+    "格式化输出",
+    "召回率",
+    "准确率",
+    "RAG评估指标",
+    "Agentic RAG",
+    "飞书消息接口",
+    "飞书卡片"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "课程导言",
+      "showIndex": true
+    },
+    {
+      "title": "RAG系统概览",
+      "showIndex": true
+    },
+    {
+      "title": "RAG完整流程",
+      "showIndex": true
+    },
+    {
+      "title": "索引流水线",
+      "showIndex": true
+    },
+    {
+      "title": "飞书开放平台",
+      "showIndex": true
+    },
+    {
+      "title": "飞书公开API",
+      "showIndex": true
+    },
+    {
+      "title": "数据归一化",
+      "showIndex": true
+    },
+    {
+      "title": "构建飞书文档树",
+      "showIndex": true
+    },
+    {
+      "title": "文档图片的处理",
+      "showIndex": true
+    },
+    {
+      "title": "OCR提取文字",
+      "showIndex": true
+    },
+    {
+      "title": "使用视觉模型提取图片信息",
+      "showIndex": true
+    },
+    {
+      "title": "文档结构化切片",
+      "showIndex": true
+    },
+    {
+      "title": "精细化切片",
+      "showIndex": true
+    },
+    {
+      "title": "Document Loader",
+      "showIndex": true
+    },
+    {
+      "title": "langchain切片工具",
+      "showIndex": true
+    },
+    {
+      "title": "Embedding模型选型",
+      "showIndex": true
+    },
+    {
+      "title": "创建Embedding模型",
+      "showIndex": true
+    },
+    {
+      "title": "Milvus环境搭建",
+      "showIndex": true
+    },
+    {
+      "title": "Milvus DDL",
+      "showIndex": true
+    },
+    {
+      "title": "Milvus DML",
+      "showIndex": true
+    },
+    {
+      "title": "Milvus DQL",
+      "showIndex": true
+    },
+    {
+      "title": "Attu使用技巧",
+      "showIndex": true
+    },
+    {
+      "title": "分析器",
+      "showIndex": true
+    },
+    {
+      "title": "全文检索",
+      "showIndex": true
+    },
+    {
+      "title": "创建飞书文档数据集",
+      "showIndex": true
+    },
+    {
+      "title": "VectorStore",
+      "showIndex": true
+    },
+    {
+      "title": "加入业务测试数据",
+      "showIndex": true
+    },
+    {
+      "title": "Bug修复",
+      "showIndex": true
+    },
+    {
+      "title": "LangGraph实现索引流水线",
+      "showIndex": true
+    },
+    {
+      "title": "功能优化",
+      "showIndex": true
+    },
+    {
+      "title": "多路召回+融合排序",
+      "showIndex": true
+    },
+    {
+      "title": "LLM Reranker",
+      "showIndex": true
+    },
+    {
+      "title": "封装检索器",
+      "showIndex": true
+    },
+    {
+      "title": "基于检索结果的内容生成",
+      "showIndex": true
+    },
+    {
+      "title": "恢复图片展示",
+      "showIndex": true
+    },
+    {
+      "title": "格式化输出",
+      "showIndex": true
+    },
+    {
+      "title": "质量评估",
+      "showIndex": true
+    },
+    {
+      "title": "Agentic RAG",
+      "showIndex": true
+    },
+    {
+      "title": "飞书消息接口",
+      "showIndex": true
+    },
+    {
+      "title": "飞书卡片消息",
+      "showIndex": true
+    }
+  ]
+}

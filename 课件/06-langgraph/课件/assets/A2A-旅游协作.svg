@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">A2A 旅游多 Agent 协作示意图</title>
+  <desc id="desc">用户将旅行目标交给旅行 Agent，旅行 Agent 通过 A2A 与机票、酒店、当地活动和支付等异构 Agent 协作。</desc>
+
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        fill: #172033;
+      }
+      .title { font-size: 30px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #64748b; }
+      .node-title { font-size: 22px; font-weight: 700; }
+      .node-desc { font-size: 15px; fill: #64748b; }
+      .icon { font-size: 34px; }
+      .edge-label { font-size: 16px; font-weight: 700; fill: #2563eb; }
+      .tag { font-size: 14px; font-weight: 600; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="620" rx="26" fill="#f8fafc"/>
+  <text class="title" x="600" y="52" text-anchor="middle">一次旅行计划，需要多个异构 Agent 协作</text>
+  <text class="subtitle" x="600" y="82" text-anchor="middle">不同公司、不同框架、不同语言，通过统一的 A2A 协议交互</text>
+
+  <!-- 用户 -->
+  <g filter="url(#shadow)">
+    <rect x="55" y="225" width="245" height="170" rx="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  </g>
+  <circle cx="177" cy="268" r="27" fill="#e2e8f0"/>
+  <text class="icon" x="177" y="280" text-anchor="middle">👤</text>
+  <text class="node-title" x="177" y="327" text-anchor="middle">用户</text>
+  <text class="node-desc" x="177" y="358" text-anchor="middle">“帮我规划国外旅行”</text>
+
+  <!-- 旅行 Agent -->
+  <g filter="url(#shadow)">
+    <rect x="405" y="200" width="280" height="220" rx="26" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  </g>
+  <circle cx="545" cy="258" r="34" fill="#2563eb"/>
+  <text class="icon" x="545" y="271" text-anchor="middle">🤖</text>
+  <text class="node-title" x="545" y="322" text-anchor="middle">旅行 Agent</text>
+  <text class="node-desc" x="545" y="353" text-anchor="middle">理解目标、拆分任务</text>
+  <text class="node-desc" x="545" y="379" text-anchor="middle">协调各个专业 Agent</text>
+
+  <!-- 用户与旅行 Agent -->
+  <path d="M 302 310 C 335 310, 364 310, 400 310" fill="none" stroke="#64748b" stroke-width="3" marker-end="url(#arrow-gray)"/>
+  <text class="tag" x="352" y="291" text-anchor="middle">旅行目标</text>
+
+  <!-- A2A 交互线 -->
+  <path d="M 688 247 C 740 247, 740 158, 800 158" fill="none" stroke="#2563eb" stroke-width="3" marker-start="url(#arrow-blue)" marker-end="url(#arrow-blue)"/>
+  <path d="M 688 283 C 745 283, 745 277, 800 277" fill="none" stroke="#2563eb" stroke-width="3" marker-start="url(#arrow-blue)" marker-end="url(#arrow-blue)"/>
+  <path d="M 688 337 C 745 337, 745 396, 800 396" fill="none" stroke="#2563eb" stroke-width="3" marker-start="url(#arrow-blue)" marker-end="url(#arrow-blue)"/>
+  <path d="M 688 373 C 740 373, 740 515, 800 515" fill="none" stroke="#2563eb" stroke-width="3" marker-start="url(#arrow-blue)" marker-end="url(#arrow-blue)"/>
+
+  <rect x="704" y="288" width="72" height="42" rx="21" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+  <text class="edge-label" x="740" y="315" text-anchor="middle">A2A</text>
+
+  <!-- 异构专业 Agent -->
+  <g filter="url(#shadow)">
+    <rect x="805" y="105" width="330" height="105" rx="20" fill="#fff7ed" stroke="#fb923c" stroke-width="2"/>
+  </g>
+  <circle cx="855" cy="157" r="30" fill="#ffedd5"/>
+  <text class="icon" x="855" y="169" text-anchor="middle">✈️</text>
+  <text class="node-title" x="903" y="151">机票 Agent</text>
+  <text class="node-desc" x="903" y="180">查询航班、完成订票</text>
+  <rect x="1024" y="122" width="90" height="27" rx="13.5" fill="#ffedd5"/>
+  <text class="tag" x="1069" y="141" text-anchor="middle">LangGraph</text>
+
+  <g filter="url(#shadow)">
+    <rect x="805" y="224" width="330" height="105" rx="20" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  </g>
+  <circle cx="855" cy="276" r="30" fill="#dcfce7"/>
+  <text class="icon" x="855" y="288" text-anchor="middle">🏨</text>
+  <text class="node-title" x="903" y="270">酒店 Agent</text>
+  <text class="node-desc" x="903" y="299">比较酒店、预订房间</text>
+  <rect x="1044" y="241" width="70" height="27" rx="13.5" fill="#dcfce7"/>
+  <text class="tag" x="1079" y="260" text-anchor="middle">ADK</text>
+
+  <g filter="url(#shadow)">
+    <rect x="805" y="343" width="330" height="105" rx="20" fill="#faf5ff" stroke="#a855f7" stroke-width="2"/>
+  </g>
+  <circle cx="855" cy="395" r="30" fill="#f3e8ff"/>
+  <text class="icon" x="855" y="407" text-anchor="middle">🗺️</text>
+  <text class="node-title" x="903" y="400">当地活动 Agent</text>
+  <text class="node-desc" x="903" y="429">推荐景点、安排行程</text>
+  <rect x="1027" y="351" width="87" height="27" rx="13.5" fill="#f3e8ff"/>
+  <text class="tag" x="1070.5" y="370" text-anchor="middle">自研框架</text>
+
+  <g filter="url(#shadow)">
+    <rect x="805" y="462" width="330" height="105" rx="20" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  </g>
+  <circle cx="855" cy="514" r="30" fill="#fee2e2"/>
+  <text class="icon" x="855" y="526" text-anchor="middle">💳</text>
+  <text class="node-title" x="903" y="508">支付 Agent</text>
+  <text class="node-desc" x="903" y="537">处理支付、返回凭证</text>
+  <rect x="1044" y="479" width="70" height="27" rx="13.5" fill="#fee2e2"/>
+  <text class="tag" x="1079" y="498" text-anchor="middle">其他厂商</text>
+
+  <text class="subtitle" x="545" y="474" text-anchor="middle">只关心对方提供的能力</text>
+  <text class="subtitle" x="545" y="500" text-anchor="middle">无需了解对方的内部实现</text>
+</svg>

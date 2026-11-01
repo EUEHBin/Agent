@@ -1,0 +1,237 @@
+{
+  "title": "LangGraph工作流开发",
+  "author": "袁进",
+  "description": "本课程深入讲解LangGraph工作流编排框架，帮助开发者构建复杂、可控的Agent流程。从节点与状态管理基础出发，系统讲解CheckPoints持久化、ReAct模式、Human-in-the-loop人机协同等核心机制，并覆盖短期记忆与长期记忆管理、会话线程、时间旅行等高级特性。",
+  "playerPath": "AI大全栈 / AI / LangGraph工作流开发",
+  "resourceUrl": "https://gitee.com/dev-edu/langgraph-python",
+  "skills": [
+    "图",
+    "节点",
+    "边",
+    "状态",
+    "图编译",
+    "通道",
+    "Runnable",
+    "阿里云百炼平台",
+    "模型聚合商",
+    "langsmith",
+    "langchain model",
+    "model provider",
+    "多模态消息",
+    "消息模板",
+    "channel reducer",
+    "Agent Server",
+    "langgraph cli",
+    "langsmith Studio",
+    "Agent Chat",
+    "超步 Super Step",
+    "并发节点",
+    "条件边",
+    "循环图",
+    "检查点 CheckPointer",
+    "线程 Thread",
+    "快照 Snapshot",
+    "存储器",
+    "ToolNode",
+    "Fake Model",
+    "部署模式",
+    "断点调试",
+    "RunnableConfig",
+    "动态切换模型配置",
+    "工具遮蔽",
+    "动态系统提示词",
+    "Runtime",
+    "Runtime Context",
+    "Assistant API",
+    "Sub Agent",
+    "Thread API",
+    "线程清理模式",
+    "Run API",
+    "运行状态",
+    "Cron API",
+    "System API",
+    "使用MCP暴露Agent服务",
+    "时间旅行",
+    "replay模式",
+    "fork模式",
+    "手动错误重试",
+    "容错机制",
+    "超时策略",
+    "重试策略",
+    "错误兜底",
+    "Command",
+    "update原语",
+    "goto原语",
+    "graph原语",
+    "中断",
+    "中断的恢复",
+    "人在回路 HITL",
+    "dynamic fan-out",
+    "map-reduce 模式",
+    "send",
+    "运行取消",
+    "多任务策略",
+    "事件流",
+    "Store",
+    "长期记忆",
+    "用户记忆隔离",
+    "A2A协议",
+    "Agent Server本地部署"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "必看导言",
+      "showIndex": true
+    },
+    {
+      "title": "langgraph核心概念",
+      "showIndex": true
+    },
+    {
+      "title": "环境搭建",
+      "showIndex": true
+    },
+    {
+      "title": "模型",
+      "showIndex": true
+    },
+    {
+      "title": "消息",
+      "showIndex": true
+    },
+    {
+      "title": "Reducer",
+      "showIndex": true
+    },
+    {
+      "title": "Agent Server",
+      "showIndex": true
+    },
+    {
+      "title": "超步",
+      "showIndex": true
+    },
+    {
+      "title": "线程和检查点",
+      "showIndex": true
+    },
+    {
+      "title": "工具节点",
+      "showIndex": true
+    },
+    {
+      "title": "Mock Model",
+      "showIndex": true
+    },
+    {
+      "title": "部署模式和学习重心",
+      "showIndex": true
+    },
+    {
+      "title": "断点调试",
+      "showIndex": true
+    },
+    {
+      "title": "模型配置的动态切换",
+      "showIndex": true
+    },
+    {
+      "title": "RunnableConfig",
+      "showIndex": true
+    },
+    {
+      "title": "Runtime",
+      "showIndex": true
+    },
+    {
+      "title": "Assistant API",
+      "showIndex": true
+    },
+    {
+      "title": "子图",
+      "showIndex": true
+    },
+    {
+      "title": "Thread API",
+      "showIndex": true
+    },
+    {
+      "title": "Run API",
+      "showIndex": true
+    },
+    {
+      "title": "Cron API",
+      "showIndex": true
+    },
+    {
+      "title": "System API",
+      "showIndex": true
+    },
+    {
+      "title": "MCP API",
+      "showIndex": true
+    },
+    {
+      "title": "时间旅行",
+      "showIndex": true
+    },
+    {
+      "title": "手动错误重试",
+      "showIndex": true
+    },
+    {
+      "title": "容错机制",
+      "showIndex": true
+    },
+    {
+      "title": "Command",
+      "showIndex": true
+    },
+    {
+      "title": "中断",
+      "showIndex": true
+    },
+    {
+      "title": "人在回路",
+      "showIndex": true
+    },
+    {
+      "title": "动态扇出",
+      "showIndex": true
+    },
+    {
+      "title": "运行取消",
+      "showIndex": true
+    },
+    {
+      "title": "多任务策略",
+      "showIndex": true
+    },
+    {
+      "title": "事件流",
+      "showIndex": true
+    },
+    {
+      "title": "Store",
+      "showIndex": true
+    },
+    {
+      "title": "长期记忆",
+      "showIndex": true
+    },
+    {
+      "title": "A2A协议",
+      "showIndex": true
+    },
+    {
+      "title": "部署",
+      "showIndex": true
+    },
+    {
+      "title": "课程总结",
+      "showIndex": true
+    }
+  ]
+}

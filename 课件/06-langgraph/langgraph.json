@@ -1,0 +1,11 @@
+{
+  "python_version": "3.13",
+  "source": {
+    "kind": "uv",
+    "root": "."
+  },
+  "graphs": {
+    "agent": "langgraph_python.dev:agent"
+  },
+  "env": ".env"
+}

@@ -1,0 +1,89 @@
+{
+  // mode: 回复模式
+  //   cycle      循环回复（走完 responses 从头再来）
+  //   sequential 顺序回复（走完即报错，用于测试用尽场景）
+  //   parrot     鹦鹉学舌，回显最后一条输入消息
+  "mode": "cycle",
+
+  // sleep: 首个 token 产出之前的等待秒数（invoke 和 stream 都生效，可模拟模型思考/卡顿）
+  "sleep": 0,
+
+  // token_sleep: 每个 token 之间的间隔秒数（invoke 按总时长等额生效，stream 逐字生效）
+  "token_sleep": 0,
+
+  // responses: 剧本式回复列表（一回合一条 AIMessage）。
+  // 只有 rules 里的规则都没命中时才会回退到这里。
+  // 每个元素支持的字段：
+  //   text      -> 文本内容
+  //   images    -> 图片 URL 或本地路径（本地路径自动转 base64 data URI）
+  //   reasoning -> 思维链，输出到 additional_kwargs.reasoning_content
+  //   tool_calls-> 工具调用，[{name, args, id?}]，id 缺省自动生成
+  // 特殊 type：
+  //   { "type": "error", "message": "..." }          -> 主动抛异常（测 retry）
+  //   { "type": "echo_image", "text": "..." }        -> 回显输入里最后一张图
+  "responses": [
+    // { "type": "error", "message": "错误1" },
+    // { "type": "error", "message": "错误2" },
+    {
+      "reasoning": "我应该按照模拟的配置返回给用户消息",
+      "text": "你好，我是由配置文件驱动的模拟模型。你可以修改 mock_model.config.jsonc 来改变我的行为。"
+    }
+    // {
+    //   "reasoning": "用户可能想看一张图片，我来生成并返回。",
+    //   "text": "这是一张示例图片：",
+    //   "images": ["https://picsum.photos/seed/langgraph/200/200"]
+    // }
+    // {
+    //   "type": "error",
+    //   "message": "模拟网络超时，请重试"
+    // }
+  ],
+
+  // rules: 条件规则列表（可选）。有规则时优先按规则回复，从上往下取第一条命中。
+  //   when.last_message: 最后一条消息的类型
+  //     human / tool_result / ai / system
+  //   when.has_image: 输入里是否存在图像消息
+  //   when.content_contains: 最后一条消息的内容里是否包含任一关键字
+  //     例如 ["天气", "weather"]，命中其一即匹配；可单独用，也可与 last_message 组合
+  //   respond: 命中时返回的回复（结构与 responses 的元素一致）
+  //   max_tool_calls: 可选，仅对 tool_result 生效。
+  //     数一下「最后一条用户消息之后」有多少条工具结果：
+  //       不足 -> 继续返回 respond（再调用一次工具）
+  //       已够 -> 返回 final（收手给最终答案）；未配 final 则跳过本规则
+  "rules": [
+    {
+      // 收到工具结果 -> 最多连查 2 次再收手
+      "when": { "last_message": "tool_result" },
+      "max_tool_calls": 5,
+      "respond": {
+        "reasoning": "需要再次调用工具获取更多数据。",
+        "tool_calls": [
+          {
+            "name": "get_current_time",
+            "args": {}
+          }
+        ]
+      },
+      "final": {
+        "reasoning": "查询完成。",
+        "text": "当前时间是：1998-8-1"
+      }
+    },
+    {
+      // 用户消息里提到时间 -> 调用时间工具（content_contains 命中任一关键字即匹配）
+      "when": {
+        "last_message": "human",
+        "content_contains": ["时间", "time"]
+      },
+      "respond": {
+        "reasoning": "用户想查时间，我需要调用 get_current_time 工具。",
+        "tool_calls": [
+          {
+            "name": "get_current_time",
+            "args": {}
+          }
+        ]
+      }
+    }
+  ]
+}

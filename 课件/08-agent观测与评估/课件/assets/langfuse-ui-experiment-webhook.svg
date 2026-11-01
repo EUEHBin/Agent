@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="650" viewBox="0 0 1380 650" role="img" aria-labelledby="title desc">
+  <title id="title">从 Langfuse UI 启动 Benchmark 的 Webhook 流程</title>
+  <desc id="desc">用户在 UI 点击启动实验，Langfuse Web 向 Agent Server 发送携带 Token 的 POST 请求。Agent Server 验证 Token 后返回 202，并在后台启动已有的 Benchmark 流程。</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-slate" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .heading { fill: #0f172a; font-size: 30px; font-weight: 700; }
+      .lane { fill: #334155; font-size: 25px; font-weight: 700; }
+      .label { fill: #0f172a; font-size: 24px; font-weight: 600; }
+      .detail { fill: #475569; font-size: 19px; }
+      .num { fill: #fff; font-size: 19px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+
+  <rect width="1380" height="650" rx="30" fill="#f8fafc"/>
+  <text x="58" y="61" class="heading">从 Langfuse UI 启动实验</text>
+  <text x="58" y="94" class="detail">Webhook 负责触发；Benchmark 沿用已实现的流程</text>
+
+  <rect x="61" y="126" width="280" height="68" rx="18" fill="#e0e7ff"/>
+  <rect x="523" y="126" width="334" height="68" rx="18" fill="#dbeafe"/>
+  <rect x="1031" y="126" width="286" height="68" rx="18" fill="#ccfbf1"/>
+  <text x="201" y="169" class="lane" text-anchor="middle">Langfuse UI</text>
+  <text x="690" y="169" class="lane" text-anchor="middle">Langfuse Web 容器</text>
+  <text x="1174" y="169" class="lane" text-anchor="middle">Agent Server</text>
+
+  <path d="M201 205 V585 M690 205 V585 M1174 205 V585" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="7 10"/>
+
+  <circle cx="86" cy="254" r="20" fill="#4f46e5"/><text x="86" y="254" class="num">1</text>
+  <text x="118" y="243" class="label">点击“启动实验”</text>
+  <path d="M204 272 H663" stroke="#2563eb" stroke-width="4" fill="none" marker-end="url(#arrow-blue)"/>
+
+  <circle cx="569" cy="346" r="20" fill="#2563eb"/><text x="569" y="346" class="num">2</text>
+  <text x="602" y="337" class="label">POST Webhook</text>
+  <text x="602" y="366" class="detail">携带 x-langfuse-signature</text>
+  <path d="M694 391 H1148" stroke="#2563eb" stroke-width="4" fill="none" marker-end="url(#arrow-blue)"/>
+
+  <rect x="1032" y="414" width="285" height="55" rx="15" fill="#ecfdf5" stroke="#5eead4" stroke-width="2"/>
+  <circle cx="1057" cy="441" r="17" fill="#0f766e"/><text x="1057" y="441" class="num" style="font-size:16px">3</text>
+  <text x="1084" y="449" class="label" style="font-size:22px">验证 Token</text>
+
+  <path d="M1149 502 H716" stroke="#64748b" stroke-width="3.5" fill="none" marker-end="url(#arrow-slate)"/>
+  <text x="789" y="489" class="detail">验证通过，返回 202 Accepted</text>
+
+  <path d="M1174 475 V535" stroke="#0f766e" stroke-width="4" fill="none" marker-end="url(#arrow-teal)"/>
+  <rect x="1000" y="546" width="349" height="69" rx="18" fill="#0f766e"/>
+  <circle cx="1032" cy="580" r="19" fill="#14b8a6"/><text x="1032" y="580" class="num">4</text>
+  <text x="1062" y="575" fill="#fff" font-size="23" font-weight="700">后台执行 Benchmark</text>
+  <text x="1062" y="600" fill="#ccfbf1" font-size="17">复用已有实验代码</text>
+</svg>

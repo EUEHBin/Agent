@@ -1,0 +1,198 @@
+{
+  "title": "LangChain + DeepAgent 开发实战",
+  "author": "袁进",
+  "description": "",
+  "playerPath": "AI大全栈 / AI / LangChain + DeepAgent 开发实战",
+  "resourceUrl": "https://gitee.com/dev-edu/langchain-deepagent",
+  "skills": [
+    "langchain agent",
+    "response format",
+    "收获地址提取",
+    "中间件",
+    "node hook",
+    "wrap hook",
+    "dynamic prompt",
+    "dynamic model",
+    "prebuilt middleware",
+    "PII 检测",
+    "自定义 PII 检测规则",
+    "deepagent的实现逻辑",
+    "tool消息补全",
+    "文件后端",
+    "沙箱技术方案选型",
+    "阿里云沙箱",
+    "沙箱挂载点",
+    "E2B SDK",
+    "实现服务端Coding Agent",
+    "产物在线预览",
+    "HITL中间件",
+    "审批",
+    "文件读写权限控制",
+    "后端路由",
+    "多模态消息",
+    "skill中间件",
+    "MCP工具注入",
+    "Memory中间件",
+    "消息卸载",
+    "上下文摘要",
+    "先计划再行动",
+    "验收和评审",
+    "解释器",
+    "多智能体设计模式",
+    "异步子代理",
+    "handoff模式",
+    "路由模式",
+    "身份认证",
+    "接口授权",
+    "资源隔离",
+    "课程总结"
+  ],
+  "type": "录播",
+  "status": "已上架",
+  "catalog": [
+    {
+      "title": "必看导言",
+      "showIndex": true
+    },
+    {
+      "title": "认识 Agent",
+      "showIndex": true
+    },
+    {
+      "title": "结构化输出",
+      "showIndex": true
+    },
+    {
+      "title": "中间件",
+      "showIndex": true
+    },
+    {
+      "title": "动态提示词",
+      "showIndex": true
+    },
+    {
+      "title": "动态模型",
+      "showIndex": true
+    },
+    {
+      "title": "预置中间件",
+      "showIndex": true
+    },
+    {
+      "title": "PII",
+      "showIndex": true
+    },
+    {
+      "title": "阶段总结",
+      "showIndex": true
+    },
+    {
+      "title": "认识 deepagent",
+      "showIndex": true
+    },
+    {
+      "title": "tool的中断与补全",
+      "showIndex": true
+    },
+    {
+      "title": "文件系统工具",
+      "showIndex": true
+    },
+    {
+      "title": "沙箱",
+      "showIndex": true
+    },
+    {
+      "title": "E2B",
+      "showIndex": true
+    },
+    {
+      "title": "沙箱隔离方案",
+      "showIndex": true
+    },
+    {
+      "title": "实现服务端CodingAgent",
+      "showIndex": true
+    },
+    {
+      "title": "HITL中间件",
+      "showIndex": true
+    },
+    {
+      "title": "文件操作权限",
+      "showIndex": true
+    },
+    {
+      "title": "后端路由",
+      "showIndex": true
+    },
+    {
+      "title": "多模态消息",
+      "showIndex": true
+    },
+    {
+      "title": "skill中间件",
+      "showIndex": true
+    },
+    {
+      "title": "MCP工具注入",
+      "showIndex": true
+    },
+    {
+      "title": "Memory中间件",
+      "showIndex": true
+    },
+    {
+      "title": "上下文压缩",
+      "showIndex": true
+    },
+    {
+      "title": "先计划再行动",
+      "showIndex": true
+    },
+    {
+      "title": "验收和评审",
+      "showIndex": true
+    },
+    {
+      "title": "解释器",
+      "showIndex": true
+    },
+    {
+      "title": "多智能体",
+      "showIndex": true
+    },
+    {
+      "title": "SubAgent模式",
+      "showIndex": true
+    },
+    {
+      "title": "异步子代理",
+      "showIndex": true
+    },
+    {
+      "title": "handoff模式",
+      "showIndex": true
+    },
+    {
+      "title": "路由模式",
+      "showIndex": true
+    },
+    {
+      "title": "课程总结",
+      "showIndex": true
+    },
+    {
+      "title": "[补充]身份认证",
+      "showIndex": true
+    },
+    {
+      "title": "[补充]授权",
+      "showIndex": true
+    },
+    {
+      "title": "[补充]资源隔离",
+      "showIndex": true
+    }
+  ]
+}
