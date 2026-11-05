@@ -1,2 +1,39 @@
-# 本机 PostgreSQL 数据目录，不提交
-/db/
+# 系统
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# 环境变量（示例文件仍提交）
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# 前端
+node_modules/
+dist/
+.pnpm-store/
+
+# 本地数据库（Postgres 数据目录、本机导出）
+db/
+*.sql
+!**/migrations/**
+
+# 临时目录
+tmp/
+temp/
+*.log

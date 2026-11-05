@@ -71,7 +71,7 @@ class AliyunOSSUploader:
         if self._config.mime_types and content_type not in self._config.mime_types:
             raise ValueError(f"不允许上传的类型: {content_type}")
 
-        dir_ = self._config.dir_strategy(basename)
+        dir_ = self._config.dir_strategy()
         key = f"{dir_}{uuid.uuid4().hex}.{suffix}"
 
         expire_time = datetime.now(timezone.utc) + timedelta(

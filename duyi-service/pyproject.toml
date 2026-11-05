@@ -14,5 +14,23 @@ members = [
 
 [dependency-groups]
 dev = [
-    "debugpy>=1.8.22",
+    "debugpy==1.8.21",
+    "httpx==0.28.1",
+    "mypy==2.1.0",
+    "pytest==9.1.1",
+    "pytest-asyncio==1.4.0",
+    "pytest-cov==7.0.0",
+    "python-dotenv==1.2.2",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = [
+    "smoke: 标记为冒烟测试，验证核心流程是否正常",
+]
+
+[tool.test-runner]
+test_dirs = [
+    "apps/*/test",
+    "packages/*/test",
 ]

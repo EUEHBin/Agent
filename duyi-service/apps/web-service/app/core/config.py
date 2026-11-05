@@ -1,26 +1,24 @@
 from pydantic_settings import BaseSettings
 
 
-class _BaseSettingsWithEnv(BaseSettings):
-    # 配置读取方式
-    model_config = {"env_file": ".env","extra":"ignore"}  # env文件的位置
+class BaseSettingsWithEnv(BaseSettings):
+    model_config = {"env_file": ".env", "extra": "ignore"}
 
 
-# 通用配置
-class _CommonSettings(_BaseSettingsWithEnv):
+class CommonSettings(BaseSettingsWithEnv):
     environment: str = "development"
 
 
-# web服务配置
-class _WebSettings(_BaseSettingsWithEnv):
+class WebSettings(BaseSettingsWithEnv):
     app_name: str = "Web Service API"  # 实际读取 WEB_APP_NAME
+    cors_origins: str = ""  # 实际读取 WEB_CORS_ORIGINS，多个来源用逗号分隔
+    cors_expose_headers: str = ""  # 实际读取 WEB_CORS_EXPOSE_HEADERS
+    jwt_secret_key: str = ""
 
-    # 配置读取方式
     model_config = {"env_prefix": "WEB_"}
 
 
-# 数据库配置
-class _DBSettings(_BaseSettingsWithEnv):
+class DBSettings(BaseSettingsWithEnv):
     host: str = ""
     port: str = ""
     name: str = ""
@@ -30,6 +28,14 @@ class _DBSettings(_BaseSettingsWithEnv):
     model_config = {"env_prefix": "DB_"}
 
 
-common_settings = _CommonSettings()
-web_settings = _WebSettings()
-db_settings = _DBSettings()
+class LogSettings(BaseSettingsWithEnv):
+    level: str = "INFO"  # DEBUG / INFO / WARNING / ERROR
+    slow_query_threshold: float = 200  # 毫秒
+
+    model_config = {"env_prefix": "LOG_"}
+
+
+common_settings = CommonSettings()
+web_settings = WebSettings()
+db_settings = DBSettings()
+log_settings = LogSettings()
